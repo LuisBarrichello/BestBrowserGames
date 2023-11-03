@@ -1,0 +1,10 @@
+.logo {
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: absolute;
+    left: 40px;
+    top: 40px;
+}

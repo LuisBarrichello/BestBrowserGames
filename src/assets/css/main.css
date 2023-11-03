@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', 'Inter', sans-serif;
+}
+
+:root {
+    font-size: 62.5%;
+
+    /* variaveis */
+    --blue: #4EA8DE;
+    --main-orange: #FFA500;
+    --main-black-background: #121212;
+    --gray: #C4C4C4;
+    --gray-300: #808080;
+    --gray-400: #333333;
+    --gray-500: #262626;
+    --gray-600: #1A1A1A;
+    --gray-700: #0D0D0D;
+    --white: #fff;
+    --purple: #8284FA;
+    --purple-dark: #685ED9;
+}
+
+button {
+    cursor: pointer;
+    all: unset;
+}
+
+body {
+    font-size: 1.6rem;
+    background-color: var(--main-black-background);
+    color: white;
+}

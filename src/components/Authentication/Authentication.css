@@ -1,0 +1,122 @@
+main {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+}
+
+.hero-login {
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: 
+    linear-gradient(180deg, rgba(130,132,250,1) 0%, rgba(130,132,250,0) 100%)
+    ,url(../../assets/images/hero-login-register.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.container-login {
+    padding: 3.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.sub-title {
+    color: var(--gray);
+    text-align: center;
+    width: 60%;
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+}
+
+.wrapper-form, .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.form {
+    width: 65%;
+}
+
+.container-input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+input {
+    color: white;
+    background: none;
+    border: none;
+    outline: none
+;}
+
+.input {
+    padding: 2.3rem 3rem;
+    border-radius: .6rem;
+    border: 1px solid var(--gray-300);
+}
+
+.input input { 
+    width: 95%;
+}
+
+.button-show-password {
+    width: 5%;
+}
+
+.button-show-password img {
+    width: 2rem;
+}
+
+.container-input-checkbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: .8rem;
+
+    font-size: 1.4rem;
+}
+
+.wrapper-input-checkbox {
+    display: flex;
+    flex-direction: row;
+    gap: 1.2rem;
+}
+
+.wrapper-input-checkbox p a {
+    color: var(--blue);
+}
+
+.button-login {
+    text-align: center;
+    width: 100%;
+    border-radius: .6rem;
+    padding: 2.3rem 0;
+    background-color: var(--purple-dark);
+}
+
+.button-login:hover {
+    background-color: var(--purple);
+    transition: .5s;
+}
