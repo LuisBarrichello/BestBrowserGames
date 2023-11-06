@@ -1,0 +1,87 @@
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+header {
+    margin-bottom: 3rem;
+}
+
+.container-input-research {
+    display: none;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 4rem;
+    text-align: center;
+}
+
+.title {
+    font-size: 3.5rem;
+    margin-bottom: 4rem;
+}
+
+.form {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+    margin-bottom: 6rem;
+}
+
+.container-input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+input, textarea {
+    resize: none;
+    color: white;
+    background: none;
+    border: none;
+    outline: none
+;}
+
+.input {
+    padding: 2.3rem 3rem;
+    border-radius: .6rem;
+    border: 1px solid var(--gray-300);
+}
+
+.input input, textarea {
+    font-size: 1.6rem;
+    width: 100%;
+}
+
+textarea {
+    height: auto;
+}
+
+.button-register {
+    margin-top: 3rem;
+    cursor: pointer;
+    text-align: center;
+    width: 50%;
+    border-radius: .6rem;
+    padding: 2.3rem 0;
+    background-color: var(--purple-dark);
+}
+
+.button-register:hover, .button-register:focus {
+    background-color: var(--purple);
+    transition: .5s;
+}

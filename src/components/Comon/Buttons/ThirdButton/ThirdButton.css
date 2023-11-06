@@ -1,0 +1,15 @@
+.button {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--purple-dark);
+    border-radius: 1rem;
+    border: .1rem solid black;
+    background: #FFF;
+    padding: .9rem 4rem;
+    box-shadow: .3rem .3rem var(--purple);
+}
+
+button:active {
+    box-shadow: none;
+    transform: translate(.3rem, .3rem);
+}

@@ -11,8 +11,6 @@
     font-size: 62.5%;
 
     /* variaveis */
-    --blue: #4EA8DE;
-    --main-orange: #FFA500;
     --main-black-background: #121212;
     --gray: #C4C4C4;
     --gray-300: #808080;
@@ -23,6 +21,8 @@
     --white: #fff;
     --purple: #8284FA;
     --purple-dark: #685ED9;
+    --gray-reviews: #3C444E;
+    --bg-reviews: #262626;
 }
 
 button {

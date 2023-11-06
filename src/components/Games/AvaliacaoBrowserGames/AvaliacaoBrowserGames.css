@@ -1,0 +1,133 @@
+main {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5rem;
+}
+
+.container-title-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-game-infos {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 4rem;
+}
+
+.title-game {
+    font-size: 3.5rem;
+}
+
+.preview {
+    background-color: red;
+    height: 30rem;
+    width: 55rem;
+}
+
+.title {
+    font-size: 4rem;
+}
+
+.wrapper-infos-game {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-evenly;
+}
+
+.wrapper-infos-game img {
+    width: 1.5rem;
+}
+
+
+.gamen-now a {
+    border: 1px solid white;
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    font-size: 2.5rem;
+}
+
+.gamen-now a:hover {
+    background-color: var(--purple-dark);
+}
+
+.container-description {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.description-title, .category-title {
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+.description {
+    color: var(--gray);
+}
+
+.container-review {
+    width: 80%;
+    background-color: var(--bg-reviews);
+    padding: 4rem;
+    border-radius: 1.5rem;
+}
+
+.container-review-title {
+    margin-bottom: 1.5rem;
+}
+.container-review-title span {
+    color: var(--gray);
+}
+
+.container-input-review textarea {
+    all: unset;
+}
+
+.container-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-input-review, .post-review {
+    background-color: var(--gray-reviews);
+    border-radius: 1.5rem;
+    padding: 1.3rem;
+}
+
+.container-post-reviews {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.post-review {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.name-user {
+    font-size: 1.8rem;
+}
+
+.description-review {
+    color: var(--gray);
+}

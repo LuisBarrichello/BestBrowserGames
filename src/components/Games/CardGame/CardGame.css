@@ -1,0 +1,67 @@
+.card {
+    padding: 1.3rem;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    border-radius: 1rem;
+    box-shadow: 3px 3px 10px rgba(130, 132, 250, 0.69);
+
+
+    width: 30rem;
+    height: 40rem;
+    color: black;
+
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 4px 4px 15px rgba(130, 132, 250, 0.8);
+}
+
+.preview-game {
+    width: 100%;
+    height: 40%;
+    overflow: hidden;
+}
+
+.preview-game img {
+    border-radius: 1.3rem;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.gameName-category {
+    margin-bottom: 1.3rem;
+}
+
+.gameName {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.category {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--purple-dark);
+}
+
+.container-description {
+    margin-bottom: 1.3rem;
+}
+
+.description {
+    font-size: 1.5rem;
+    color: var(--gray-600)
+}
+
+.link-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}

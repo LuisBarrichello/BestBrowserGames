@@ -18,13 +18,23 @@ function Login() {
                         <div className="container-input">
                             <label htmlFor="email">E-mail</label>
                             <div className="input">
-                                <input type="email" name="email" id="input-email" placeholder="Digite seu E-mail..." />
+                                <input 
+                                    type="email" 
+                                    name="email" 
+                                    id="input-email" 
+                                    placeholder="Digite seu E-mail..." 
+                                />
                             </div>
                         </div>
                         <div className="container-input">
                             <label htmlFor="password">Senha</label>
                             <div className="input">
-                                <input type="password" name="password" id="passoword" placeholder="Digite sua senha..."/>
+                                <input 
+                                    type="password" 
+                                    name="password" 
+                                    id="passoword" 
+                                    placeholder="Digite sua senha..."
+                                />
                                 <button className="button-show-password">
                                     <img src={eyeIcon} alt="Show Password" className=""/>
                                 </button>
@@ -33,11 +43,19 @@ function Login() {
                     </div>
                     <div className="container-input-checkbox">
                         <div className="wrapper-input-checkbox">
-                            <input type="checkbox" name="terms-conditions" id="terms-conditions" />
+                            <input 
+                                type="checkbox" 
+                                name="terms-conditions" 
+                                id="terms-conditions" 
+                            />
                             <p>Eu concordo com os <span>termos e condições</span></p>
                         </div>
                         <div className="wrapper-input-checkbox">
-                            <input type="checkbox" name="terms-conditions" id="terms-conditions" />
+                            <input 
+                                type="checkbox" 
+                                name="terms-conditions" 
+                                id="terms-conditions" 
+                            />
                             <p>Gostaria de ser informado sobre as últimas notícias e dicas</p>
                         </div>
                     </div>

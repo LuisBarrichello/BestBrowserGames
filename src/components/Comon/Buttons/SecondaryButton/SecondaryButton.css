@@ -1,0 +1,16 @@
+.button {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--purple-dark);
+    border-radius: 1.5rem;
+    border: .2rem solid black;
+    background: #FFF;
+    padding: 1.3rem 6rem;
+    box-shadow: .3rem .3rem var(--purple);
+}
+
+button:active {
+    box-shadow: none;
+    transform: translate(.3rem, .3rem);
+}

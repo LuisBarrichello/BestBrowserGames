@@ -8,6 +8,8 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: end;
+
+    margin-bottom: 3rem;
 }
 
 .container-input-research {
@@ -21,6 +23,7 @@ header {
 }
 
 .container-input-research input {
+    color: var(--gray-400);
     width: 100%;
     background: none;
     border: none;
