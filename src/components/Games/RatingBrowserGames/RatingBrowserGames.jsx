@@ -1,12 +1,12 @@
 /* import SecondaryButton from "../../Comon/Buttons/SecondaryButton/SecondaryButton"; */
-import Header from "../../Comon/Header/Header"
+import Header from "../../Common/Header/Header"
 import PropTypes from "prop-types"
-import "./AvaliacaoBrowserGames.css"
+import "./RatingBrowserGames.css"
 import IconLink from "../../../assets/images/icon-link.svg"
-import ThirdButton from "../../Comon/Buttons/ThirdButton/ThirdButton"
-import Footer from "../../Comon/Footer/Footer"
+import ThirdButton from "../../Common/Buttons/ThirdButton/ThirdButton"
+import Footer from "../../Common/Footer/Footer"
 
-function AvaliacaoBrowserGames({category, nameOfGame, URLGame,description}) {
+function RatingBrowserGames({category, nameOfGame, URLGame,description}) {
 
    /*  const handleClickShowMore = () => {
         console.log('Botão clicado! VER MAIS');
@@ -89,9 +89,9 @@ function AvaliacaoBrowserGames({category, nameOfGame, URLGame,description}) {
 }
 /* <SecondaryButton text="Avaliar" onClick={handleClickShowMore}></SecondaryButton> */
 
-export default AvaliacaoBrowserGames
+export default RatingBrowserGames
 
-AvaliacaoBrowserGames.propTypes = {
+RatingBrowserGames.propTypes = {
     category: PropTypes.string.isRequired,
     nameOfGame: PropTypes.string.isRequired,
     URLGame: PropTypes.string.isRequired,

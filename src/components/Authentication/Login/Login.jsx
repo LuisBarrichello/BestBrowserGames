@@ -1,6 +1,6 @@
 import "../Authentication.css"
 import eyeIcon from '../../../assets/images/eye.svg';
-import Logo from "../../Comon/Logo/Logo";
+import Logo from "../../Common/Logo/Logo";
 
 
 function Login() {

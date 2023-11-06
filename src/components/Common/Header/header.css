@@ -37,7 +37,10 @@ header {
 }
 
 .links-pages {
+    text-decoration: none;
+    color: white;
     cursor: pointer;
     list-style: none;
     font-size: 1.8rem;
+    padding: .5rem;
 }

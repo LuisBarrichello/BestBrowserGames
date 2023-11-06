@@ -2,6 +2,7 @@ import "./header.css"
 import "../../../assets/css/main.css"
 import Logo from "../Logo/Logo"
 import IconResearch from "../../../assets/images/icon-research.svg"
+import { Link } from "react-router-dom"
 
 function Header() {
     return (
@@ -13,9 +14,15 @@ function Header() {
                 </div>
             <nav>
                 <ul className="wrapper-links-pages">
-                    <li className="links-pages">Home</li>
-                    <li className="links-pages">Explorar</li>
-                    <li className="links-pages">Login</li>
+                    <Link to="/" className="links-pages">
+                        <li>Home</li>
+                    </Link>
+                    <Link className="links-pages">
+                        <li>Explorar</li>
+                    </Link>
+                    <Link className="links-pages">
+                        <li>Login</li>
+                    </Link>
                 </ul>
             </nav>
         </header>

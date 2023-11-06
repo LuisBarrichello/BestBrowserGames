@@ -6,16 +6,17 @@ import Login from "./components/Authentication/Login/Login"
 import Register from "./components/Authentication/Register/Register"
 import Footer from './components/Comon/Footer/Footer'
 import RegisterGame from './components/Games/RegisterGame/RegisterGame'
-import AvaliacaoBrowserGames from './components/Games/AvaliacaoBrowserGames/AvaliacaoBrowserGames';
+import RatingBrowserGames from './components/Games/RatingBrowserGames/AvaliacaoBrowserGames';
+import EditRegistrationData from './components/Authentication/EditRegistrationData/EditRegistrationData';
 */
 import Home from './components/Games/Home/Home';
+
 
 function App() {
 
   return (
       <Routes>
-        <Route path='/' element={<Home/>}>
-        </Route>
+        <Route path='/' element={<Home/>}></Route>
       </Routes>
   )
 }

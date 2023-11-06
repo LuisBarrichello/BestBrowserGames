@@ -120,3 +120,9 @@ input {
     background-color: var(--purple);
     transition: .5s;
 }
+
+.button-login:focus {
+    outline: 1px solid white;
+    background-color: var(--purple);
+    transition: .5s;
+}

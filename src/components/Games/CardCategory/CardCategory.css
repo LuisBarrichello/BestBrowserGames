@@ -1,5 +1,4 @@
-.card {
-    padding: 1.3rem;
+.card-category {
     background-color: var(--white);
     display: flex;
     flex-direction: column;
@@ -16,20 +15,19 @@
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.card:hover {
+.card-category:hover {
     transform: scale(1.02);
     box-shadow: 4px 4px 15px rgba(130, 132, 250, 0.8);
 }
 
-.preview-game {
+.preview-category {
     width: 100%;
     height: 40%;
     overflow: hidden;
-    margin-bottom: .8rem;
 }
 
-.preview-game img {
-    border-radius: 1.3rem;
+.preview-category img {
+    border-radius: 1.3rem 1.3rem 0 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -40,15 +38,14 @@
     margin-bottom: 1.3rem;
 }
 
-.gameName {
-    font-size: 1.8rem;
+.name-category {
+    color: black;
+    font-size: 2rem;
     font-weight: 500;
 }
 
-.category {
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: var(--purple-dark);
+.wrapper-content-card-category {
+    padding: 1.3rem;
 }
 
 .container-description {

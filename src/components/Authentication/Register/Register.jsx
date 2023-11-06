@@ -1,5 +1,5 @@
 import "../Authentication.css"
-import Logo from "../../Comon/Logo/Logo"
+import Logo from "../../Common/Logo/Logo"
 
 function Login() {
 

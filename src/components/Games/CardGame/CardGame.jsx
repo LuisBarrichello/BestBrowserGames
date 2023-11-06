@@ -1,6 +1,6 @@
 import "./CardGame.css"
 import { Link } from "react-router-dom"
-import ButtonCards from "../../Comon/Buttons/ButtonCards/ButtonCards"
+import ButtonCards from "../../Common/Buttons/ButtonCards/ButtonCards"
 import PropTypes from "prop-types"
 
 function CardGame(props) {

@@ -5,7 +5,7 @@ function Footer() {
         <section className="footer">
             <div className="copyright">
                 <p className="paragraph-copyright">
-                © 2023, Browser Game Hub, Inc. Todos os direitos reservados.
+                © 2023, Best Browser Games, Inc. Todos os direitos reservados.
                 </p>
             </div>
             <div className="footer-legal">

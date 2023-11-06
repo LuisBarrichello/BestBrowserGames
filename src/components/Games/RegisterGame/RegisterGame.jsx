@@ -1,6 +1,6 @@
 import "./RegisterGame.css";
-import Footer from "../../Comon/Footer/Footer";
-import Header from "../../Comon/Header/Header";
+import Footer from "../../Common/Footer/Footer";
+import Header from "../../Common/Header/Header";
 
 function RegisterGame() {
     return (
