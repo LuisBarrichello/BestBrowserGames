@@ -4,7 +4,7 @@ import Logo from "../../Common/Logo/Logo"
 function Login() {
 
     return (
-        <main>
+        <main className="main-authentication">
             <div className="hero-login">
                 <Logo></Logo>
             </div>

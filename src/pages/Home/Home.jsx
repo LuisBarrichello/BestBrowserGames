@@ -1,10 +1,11 @@
-import Header from "../../Common/Header/Header";
-import Footer from "../../Common/Footer/Footer"
-import CardGame from "../CardGame/CardGame";
-import SecondaryButton from "../../Common/Buttons/SecondaryButton/SecondaryButton"
+import Header from "../../components/Common/Header/Header";
+import Footer from "../../components/Common/Footer/Footer"
+import CardGame from "../../components/Games/CardGame/CardGame";
+import SecondaryButton from "../../components/Common/Buttons/SecondaryButton/SecondaryButton"
 import { Link } from "react-router-dom";
 import "./Home.css"
-import CardCategory from "../CardCategory/CardCategory";
+import CardCategory from "../../components/Games/CardCategory/CardCategory";
+
 
 
 function Home() {
@@ -13,7 +14,7 @@ function Home() {
     return (
         <>
             <Header></Header>
-            <main>
+            <main className="main-home">
                 <section className="container-cards-games">
                     <div className="cards-games-container-title">
                         <h2>Explore Novos Horizontes de Jogos</h2>

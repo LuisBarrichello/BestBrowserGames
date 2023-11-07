@@ -23,6 +23,20 @@
     --purple-dark: #685ED9;
     --gray-reviews: #3C444E;
     --bg-reviews: #262626;
+
+    --blue-marguerite-50: #f0f3fd;
+    --blue-marguerite-100: #e3e8fc;
+    --blue-marguerite-200: #ccd4f9;
+    --blue-marguerite-300: #adb7f4;
+    --blue-marguerite-400: #8c93ed;
+    --blue-marguerite-500: #7170e4;
+    --blue-marguerite-600: #685ed9;
+    --blue-marguerite-700: #5145bd;
+    --blue-marguerite-800: #423a99;
+    --blue-marguerite-900: #3a357a;
+    --blue-marguerite-950: #231f47;
+
+
 }
 
 button {

@@ -1,10 +1,36 @@
+import Logo from "../Logo/Logo"
+import { Link } from "react-router-dom"
+import IconResearch from "../../../assets/images/icon-research.svg"
 import "./header.css"
 import "../../../assets/css/main.css"
-import Logo from "../Logo/Logo"
-import IconResearch from "../../../assets/images/icon-research.svg"
-import { Link } from "react-router-dom"
 
 function Header() {
+    const isLoggedIn = false;
+    const isRegister = true;
+
+    const renderLogginOrMyAccount = () =>  {
+        if(isLoggedIn === true && isRegister === true) {
+            return (
+                <Link to="./" className="links-pages">
+                    <li>Minha Conta</li>
+                </Link>
+            )
+        } else {
+            return (
+                <>
+                    <Link to="./login" className="links-pages">
+                        <li>Login</li>
+                    </Link>
+                    <Link to="./register" className="links-pages">
+                        <li>Cadastrar conta</li>
+                    </Link>
+                </>
+            )
+        }
+    }
+
+    
+
     return (
         <header>
                 <Logo></Logo>
@@ -20,9 +46,9 @@ function Header() {
                     <Link className="links-pages">
                         <li>Explorar</li>
                     </Link>
-                    <Link className="links-pages">
-                        <li>Login</li>
-                    </Link>
+                    <div className="wrapper-buttons-account">
+                        {renderLogginOrMyAccount()}
+                    </div>
                 </ul>
             </nav>
         </header>

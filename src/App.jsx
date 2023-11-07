@@ -1,15 +1,14 @@
-import './assets/css/main.css'
-import { Route, Routes } from "react-router-dom";
 /* 
-import Header from './components/Comon/Header/Header'
-import Login from "./components/Authentication/Login/Login" 
-import Register from "./components/Authentication/Register/Register"
-import Footer from './components/Comon/Footer/Footer'
+
 import RegisterGame from './components/Games/RegisterGame/RegisterGame'
 import RatingBrowserGames from './components/Games/RatingBrowserGames/AvaliacaoBrowserGames';
 import EditRegistrationData from './components/Authentication/EditRegistrationData/EditRegistrationData';
 */
-import Home from './components/Games/Home/Home';
+import { Route, Routes } from "react-router-dom";
+import Home from './pages/Home/Home';
+import Login from "./components/Authentication/Login/Login"
+import Register from "./components/Authentication/Register/Register"
+import './assets/css/main.css'
 
 
 function App() {
@@ -17,6 +16,8 @@ function App() {
   return (
       <Routes>
         <Route path='/' element={<Home/>}></Route>
+        <Route path='/login' element={<Login/>}></Route>
+        <Route path='/register' element={<Register/>}></Route>
       </Routes>
   )
 }

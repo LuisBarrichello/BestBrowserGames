@@ -44,3 +44,17 @@ header {
     font-size: 1.8rem;
     padding: .5rem;
 }
+
+.wrapper-buttons-account {
+    display: flex;
+    align-items: center;
+    gap: 1.3rem;
+}
+
+.wrapper-buttons-account a {
+    color: var(--blue-marguerite-950);
+    padding: .5rem;
+    border-radius: .3rem;
+    border: 1px solid var(--blue-marguerite-950);
+    background: var(--blue-marguerite-50);
+}
