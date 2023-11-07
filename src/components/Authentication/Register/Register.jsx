@@ -1,7 +1,60 @@
 import "../Authentication.css"
 import Logo from "../../Common/Logo/Logo"
+import { useState } from "react";
 
-function Login() {
+
+
+
+
+function Register() {
+    const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        birthDate: '',
+        state: '',
+        country: '',
+        agreeToTerms: false,
+        receiveNews: false
+    });
+
+    const handleInputChange = () => {
+        const { name, value, type, checked } = e.target;
+        const newValue = type === "checkbox" ? checked : value;
+        setFormData({
+            ...formData,
+            [name]: newValue,
+        });
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+
+        handleFecthAPI(formData)
+    }
+
+    const handleFecthAPI = async (formData) => {
+        try {
+            const apiUrl = 'https://api-best-browser-games-github-luisbarrichello-9uxojph5p.vercel.app/users';
+            const requestData = {
+                method: 'POST', 
+                headers: {
+                  'Content-Type': 'application/json', // Tipo de conteúdo
+                },
+                body: JSON.stringify(formData)
+            };
+            
+            const response = await fetch(apiUrl, requestData)
+
+            if (!response.ok) {
+                throw new Error(`Erro de rede - ${response.status}`);
+            }
+            console.log("Usuário registrado com sucesso!");
+        } catch (error) {
+            console.error(error)
+        }
+    } 
 
     return (
         <main className="main-authentication">
@@ -11,7 +64,7 @@ function Login() {
             <div className="container-login">
                 <h1 className="title">Junte-se ao jogo! <br /> Crie sua conta</h1>
                 <p className="sub-title">Descubra. Avalie. Jogue. Sua jornada pelo mundo dos browser games começa aqui!</p>
-                <form action="" className="form">
+                <form className="form" onSubmit={handleSubmit}>
                     <div className="wrapper-form">
                         <div className="container-input">
                             <label htmlFor="full-name">Nome completo</label>
@@ -58,11 +111,11 @@ function Login() {
                     </div>
                     <div className="container-input-checkbox">
                         <div className="wrapper-input-checkbox">
-                            <input type="checkbox" name="terms-conditions" id="terms-conditions" />
+                            <input type="checkbox" name="terms-conditions" id="terms-conditions" checked={formData.receiveNews} onChange={handleInputChange}/>
                             <p>Eu concordo com os <a href="#">termos e condições</a></p>
                         </div>
                         <div className="wrapper-input-checkbox">
-                            <input type="checkbox" name="terms-conditions" id="terms-conditions" />
+                            <input type="checkbox" name="terms-conditions" id="terms-conditions" checked={formData.receiveNews}  onChange={handleInputChange}/>
                             <p>Gostaria de ser informado sobre as últimas notícias e dicas</p>
                         </div>
                     </div>
@@ -73,4 +126,4 @@ function Login() {
     )
 }
 
-export default Login
+export default Register
