@@ -6,15 +6,17 @@ import "../Authentication.css"
 const loginUser = async (email, passoword) => {
     try {
         const apiUrl = 'https://api-best-browser-games-github-luisbarrichello-9uxojph5p.vercel.app/Users/loginUser';
-
-        const response = await fetch(apiUrl, {
+        const responseData = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             }, 
             body: JSON.stringify(email, passoword),
-        })
-        .then(data => data.json())
+        }
+
+        const response = await fetch(apiUrl, responseData)
+
+        console.log(response)
 
         return response
 

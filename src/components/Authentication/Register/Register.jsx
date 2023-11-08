@@ -2,55 +2,56 @@ import "../Authentication.css"
 import Logo from "../../Common/Logo/Logo"
 import { useState } from "react";
 
-
-
-
-
 function Register() {
     const [formData, setFormData] = useState({
-        fullName: '',
+        name: '',
         email: '',
         password: '',
         confirmPassword: '',
         birthDate: '',
-        state: '',
         country: '',
-        agreeToTerms: false,
-        receiveNews: false
+        state: '',
     });
 
-    const handleInputChange = () => {
-        const { name, value, type, checked } = e.target;
-        const newValue = type === "checkbox" ? checked : value;
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
         setFormData({
             ...formData,
-            [name]: newValue,
+            [name]: value,
         });
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
-
-        handleFecthAPI(formData)
+        await handleFecthAPI(formData)
     }
 
     const handleFecthAPI = async (formData) => {
         try {
             const apiUrl = 'https://api-best-browser-games-github-luisbarrichello-9uxojph5p.vercel.app/users';
             const requestData = {
-                method: 'POST', 
+                method: 'POST',
+                mode: 'no-cors',
                 headers: {
-                  'Content-Type': 'application/json', // Tipo de conteúdo
+                    'Content-Type': 'application/json', 
                 },
                 body: JSON.stringify(formData)
             };
+
+            console.log('URL da Solicitação:', apiUrl);
+            console.log('Cabeçalhos da Solicitação:', requestData.headers);
+
             
             const response = await fetch(apiUrl, requestData)
+
 
             if (!response.ok) {
                 throw new Error(`Erro de rede - ${response.status}`);
             }
             console.log("Usuário registrado com sucesso!");
+
+            const data = await response.json();
+            console.log(data);
         } catch (error) {
             console.error(error)
         }
@@ -67,58 +68,89 @@ function Register() {
                 <form className="form" onSubmit={handleSubmit}>
                     <div className="wrapper-form">
                         <div className="container-input">
-                            <label htmlFor="full-name">Nome completo</label>
+                            <label htmlFor="name">Nome completo</label>
                             <div className="input">
-                                <input type="text" name="full-name" id="full-name" placeholder="Nome Completo..." required/>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    id="name"
+                                    placeholder="Nome Completo..."
+                                    required
+                                    value={formData.name}
+                                    onChange={handleInputChange}
+                                />
                             </div>
                         </div>
                         <div className="container-input">
                             <label htmlFor="email">E-mail</label>
                             <div className="input">
-                                <input type="email" name="email" id="input-email" placeholder="E-mail..." required/>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    placeholder="E-mail..."
+                                    required
+                                    value={formData.email}
+                                    onChange={handleInputChange}
+                                />
                             </div>
                         </div>
                         <div className="container-input">
                             <label htmlFor="password">Crie sua senha</label>
                             <div className="input">
-                                <input type="password" name="password" id="passoword" placeholder="Senha..." required/>
+                                <input type="password" name="password" id="password" placeholder="Senha..." required
+                                    value={formData.password}
+                                    onChange={handleInputChange}
+                                />
                             </div>
                         </div>
                         <div className="container-input">
-                            <label htmlFor="password">Digite novamente sua senha</label>
+                            <label htmlFor="confirmPassword">Digite novamente sua senha</label>
                             <div className="input">
-                                <input type="password" name="password" id="passoword" placeholder="Senha..." required/>
+                                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Senha..." required
+                                    value={formData.confirmPassword}
+                                    onChange={handleInputChange}
+                                />
                             </div>
                         </div>
                         <div className="container-input">
-                            <label htmlFor="date-of-birth">Data de nascimento</label>
+                            <label htmlFor="birthDate">Data de nascimento</label>
                             <div className="input">
-                                <input type="date" name="date-of-birth" id="date-of-birth" required/>
-                            </div>
-                        </div>
-                        <div className="container-input">
-                            <label htmlFor="state">Estado</label>
-                            <div className="input">
-                                <input type="text" name="state" id="state" placeholder="Estado, ex: São Paulo..." required/>
+                                <input type="date" name="birthDate" id="birthDate" required 
+                                    value={formData.birthDate}
+                                    onChange={handleInputChange}
+                                />
                             </div>
                         </div>
                         <div className="container-input">
                             <label htmlFor="country">País</label>
                             <div className="input">
-                                <input type="text" name="country" id="country" placeholder="País, ex: Brasil..." required/>
+                                <input type="text" name="country" id="country" placeholder="País, ex: Brasil..." required
+                                    value={formData.country}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                        </div>
+                        <div className="container-input">
+                            <label htmlFor="state">Estado</label>
+                            <div className="input">
+                                <input type="text" name="state" id="state" placeholder="Estado, ex: São Paulo..." required
+                                    value={formData.state}
+                                    onChange={handleInputChange}
+                                />
                             </div>
                         </div>
                     </div>
-                    <div className="container-input-checkbox">
+                    {/* <div className="container-input-checkbox">
                         <div className="wrapper-input-checkbox">
-                            <input type="checkbox" name="terms-conditions" id="terms-conditions" checked={formData.receiveNews} onChange={handleInputChange}/>
+                            <input type="checkbox" name="terms-conditions" id="terms-conditions" onChange={handleInputChange}/>
                             <p>Eu concordo com os <a href="#">termos e condições</a></p>
                         </div>
                         <div className="wrapper-input-checkbox">
-                            <input type="checkbox" name="terms-conditions" id="terms-conditions" checked={formData.receiveNews}  onChange={handleInputChange}/>
+                            <input type="checkbox" name="terms-conditions" id="terms-conditions" onChange={handleInputChange}/>
                             <p>Gostaria de ser informado sobre as últimas notícias e dicas</p>
                         </div>
-                    </div>
+                    </div> */}
                     <button className="button-login">Entrar</button>
                 </form>
             </div>
