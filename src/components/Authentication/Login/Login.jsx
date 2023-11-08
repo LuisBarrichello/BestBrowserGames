@@ -1,54 +1,68 @@
 import { useState } from 'react';
 import eyeIcon from '../../../assets/images/eye.svg';
+import eyeIconOff from '../../../assets/images/eye-off.svg'
 import Logo from "../../Common/Logo/Logo";
 import "../Authentication.css"
 
-const loginUser = async (email, passoword) => {
-    try {
-        const apiUrl = 'https://api-best-browser-games-github-luisbarrichello-9uxojph5p.vercel.app/Users/loginUser';
-        const responseData = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            }, 
-            body: JSON.stringify(email, passoword),
-        }
-
-        const response = await fetch(apiUrl, responseData)
-
-        console.log(response)
-
-        return response
-
-    } catch (error) {
-        console.error(error)
-    }
-}
-
-
 function Login() {
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    });
+    const [showPassword, setShowPassword] = useState(false);
+    const [loginError, setLoginError] = useState(null);
 
-    const [email, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+        console.log(formData)
+    }
+
+    const handleFecthAPI = async (formData) => {
+        try {
+            const apiUrl = 'https://api-best-browser-games-github-luisbarrichello.vercel.app/users/login';
+            const responseData = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }, 
+                body: JSON.stringify(formData),
+            }
+    
+            const response = await fetch(apiUrl, responseData)
+
+            console.log(response.status)
+            if (response.status === 201) {
+                const data = await response.json();
+                console.log(data);
+
+                if ('token' in data) {
+                    localStorage.setItem('token', data.token);
+                    window.location.href = "/";
+                }
+            } else {
+                const errorData = await response.json();
+                setLoginError(errorData.message);
+                alert(loginError)
+            }
+    
+        } catch (error) {
+            console.error(error)    
+        }
+    }
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const response = await loginUser({
-            email: email, 
-            password: password,
-        })
-
-        if('token' in response) {
-            alert("Success: " + response.message);
-            localStorage.setItem('token', response['token'])
-            localStorage.setItem('user', JSON.stringify(response['username']))
-            window.location.href = "/";
-        } else {
-            alert("Failed: " + response.message);
-            window.location.href = "/register";
-        }
+        await handleFecthAPI(formData)
     }
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     
     return (
@@ -59,7 +73,7 @@ function Login() {
             <div className="container-login">
                 <h1 className="title">Junte-se ao jogo!</h1>
                 <p className="sub-title">Descubra. Avalie. Jogue. Sua jornada pelo mundo dos browser games começa aqui!</p>
-                <form action="" onSubmit={handleSubmit} className="form">
+                <form onSubmit={handleSubmit} className="form">
                     <div className="wrapper-form">
                         <div className="container-input">
                             <label htmlFor="email">E-mail</label>
@@ -69,7 +83,7 @@ function Login() {
                                     name="email" 
                                     id="input-email" 
                                     placeholder="Digite seu E-mail..." 
-                                    onChange={event => setUsername(event.target.value)}
+                                    onChange={handleInputChange}
                                 />
                             </div>
                         </div>
@@ -77,36 +91,23 @@ function Login() {
                             <label htmlFor="password">Senha</label>
                             <div className="input">
                                 <input 
-                                    type="password" 
+                                    type={showPassword ? 'text' : 'password'}
                                     name="password" 
-                                    id="passoword" 
+                                    id="password" 
                                     placeholder="Digite sua senha..."
-                                    onChange={event => setPassword(event.target.value)}
+                                    onChange={handleInputChange}
                                 />
-                                <button className="button-show-password">
-                                    <img src={eyeIcon} alt="Show Password" className=""/>
+                                <button 
+                                    className="button-show-password"
+                                >
+                                    <img 
+                                        src={showPassword ? eyeIconOff : eyeIcon} 
+                                        alt="Show Password" 
+                                        className=""
+                                        onClick={togglePasswordVisibility}
+                                    />
                                 </button>
                             </div>
-                        </div>
-                    </div>
-                    <div className="container-input-checkbox">
-                        <div className="wrapper-input-checkbox">
-                            <input 
-                                type="checkbox" 
-                                name="terms-conditions" 
-                                id="terms" 
-                                required
-                            />
-                            <p>Eu concordo com os <span>termos e condições</span></p>
-                        </div>
-                        <div className="wrapper-input-checkbox">
-                            <input 
-                                type="checkbox" 
-                                name="terms-conditions" 
-                                id="conditions" 
-                                required
-                            />
-                            <p>Gostaria de ser informado sobre as últimas notícias e dicas</p>
                         </div>
                     </div>
                     <button type="submit" className="button-login">Entrar</button>

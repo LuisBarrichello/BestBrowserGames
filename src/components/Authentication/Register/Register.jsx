@@ -19,43 +19,41 @@ function Register() {
             ...formData,
             [name]: value,
         });
-    }
-
-    const handleSubmit = async (event) => {
-        event.preventDefault()
-        await handleFecthAPI(formData)
+        console.log(formData)
     }
 
     const handleFecthAPI = async (formData) => {
         try {
-            const apiUrl = 'https://api-best-browser-games-github-luisbarrichello-9uxojph5p.vercel.app/users';
+            const apiUrl = 'https://api-best-browser-games-github-luisbarrichello.vercel.app/users';
             const requestData = {
                 method: 'POST',
-                mode: 'no-cors',
                 headers: {
-                    'Content-Type': 'application/json', 
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(formData)
             };
-
-            console.log('URL da Solicitação:', apiUrl);
-            console.log('Cabeçalhos da Solicitação:', requestData.headers);
-
             
             const response = await fetch(apiUrl, requestData)
 
-
-            if (!response.ok) {
-                throw new Error(`Erro de rede - ${response.status}`);
-            }
-            console.log("Usuário registrado com sucesso!");
-
             const data = await response.json();
             console.log(data);
+
+            if (!response.ok) {
+                throw new Error(`Erro ao cadastrar - ${response.message}`);
+            }
+
+            alert("Usuário registrado com sucesso!");
+            window.location.href = "/"
+
         } catch (error) {
             console.error(error)
         }
     } 
+
+    const handleSubmit = async (event) => {
+        event.preventDefault()        
+        await handleFecthAPI(formData)
+    }
 
     return (
         <main className="main-authentication">

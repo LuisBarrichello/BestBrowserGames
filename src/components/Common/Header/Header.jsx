@@ -5,13 +5,12 @@ import "./header.css"
 import "../../../assets/css/main.css"
 
 function Header() {
-    const isLoggedIn = false;
-    const isRegister = true;
-
+    
     const renderLogginOrMyAccount = () =>  {
-        if(isLoggedIn === true && isRegister === true) {
+        const tokenLocalStorage = localStorage.getItem('token')
+        if(tokenLocalStorage !== null) {
             return (
-                <Link to="./" className="links-pages">
+                <Link to="/myaccount" className="links-pages">
                     <li>Minha Conta</li>
                 </Link>
             )
@@ -29,7 +28,9 @@ function Header() {
         }
     }
 
-    
+    /* const researchGame = () => {
+
+    } */
 
     return (
         <header>
