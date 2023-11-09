@@ -3,6 +3,7 @@ import "./EditRegistrationData.css";
 import Header from "../../Common/Header/Header";
 import Footer from "../../Common/Footer/Footer";
 import { useState } from "react";
+import { jwtDecode } from "jwt-decode";
 
 function EditRegistrationData() {
     const [formData, setFormData] = useState({
@@ -14,17 +15,27 @@ function EditRegistrationData() {
     });
 
     const handleInputChange = (event) => {
-        const [value] = event.target
-        setFormData(value)
+        const { name, value } = event.target
+        setFormData({
+            ...formData,
+            [name]: value
+        })
+        console.log(formData)
     }
 
     const handleFecthAPI = async () => {
 
         try {
-            const apiUrl = `https://api-best-browser-games-github-luisbarrichello.vercel.app/users/{id}`
+            const token = localStorage.getItem('token')
+            const decode = jwtDecode(token)
+            const userId = decode.id
+            console.log(decode.id)
+
+            
+            const apiUrl = `https://api-best-browser-games-github-luisbarrichello.vercel.app/users/${userId}`
             const requestData = {
                 method: 'PUT',
-                header: {
+                headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(formData)
@@ -38,9 +49,9 @@ function EditRegistrationData() {
             if (response.ok) {
                 const data = await response.json();
                 console.log(data)
+                alert('Alterações de cadastro enviado com sucesso')
             } else {
-                    const errorData = await response.json();
-                    console.log('Erro de validação:', errorData);
+                    throw new Error(`HTTP error! status: ${response.status}`);
             }
 
         } catch (error) {
@@ -129,7 +140,7 @@ function EditRegistrationData() {
                             />
                         </div>
                     </section>
-        
+
                     <button type="submit" className="button-submit">Salvar Alterações</button>
                 </fieldset>
                 </form>

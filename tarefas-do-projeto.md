@@ -29,13 +29,13 @@
   - [ ] Utilizar os métodos do ciclo de vida de componentes conforme necessário.
 
 - [ ] **Cadastro de Membros:**
-  - [ ] Criar um formulário de cadastro para membros.
-  - [ ] Coletar informações como nome, e-mail, senha, data de nascimento, estado e país.
+  - [x] Criar um formulário de cadastro para membros.
+  - [x] Coletar informações como nome, e-mail, senha, data de nascimento, estado e país.
   - [ ] Implementar validações para os campos do formulário.
   - [ ] Permitir a atualização de informações para membros cadastrados.
 
 - [ ] **Login e Atualização de Dados Cadastrais:**
-  - [ ] Criar um formulário de login para membros cadastrados.
+  - [x] Criar um formulário de login para membros cadastrados.
   - [ ] Implementar autenticação e controle de sessão.
   - [ ] Permitir a atualização dos dados cadastrais dos membros.
 

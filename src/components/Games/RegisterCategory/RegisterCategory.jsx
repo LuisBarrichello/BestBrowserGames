@@ -9,7 +9,7 @@ function RegisterCategory() {
     /* VERIFICAR ROLE PARA USUARIO CADASTRAR CATEGORIA */
     
     const handleInputChange = (event) => {
-        const [ value ] = event.target;
+        const { value } = event.target;
         setNameCategory(value)
         console.log(nameCatedory)
     }
@@ -27,8 +27,13 @@ function RegisterCategory() {
 
             const response = await fetch(apiUrl, requestData)
 
-            console.log(response.status, response.json())
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error: ${response.status}`);
+            }
 
+            const data = await response.json();
+            console.log(data);
 
         } catch (error) {
             console.error(error)
@@ -38,7 +43,6 @@ function RegisterCategory() {
     
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-
         await handleFecthAPI()
     }
 
@@ -50,7 +54,7 @@ function RegisterCategory() {
                 <h1 className="title">Adicionar Nova Categoria</h1>
                 <form onSubmit={handleFormSubmit} className="form">
                 <div className="container-input">
-                    <label htmlFor="category-title">Título do jogo</label>
+                    <label htmlFor="category-title">Título da Categoria</label>
                     <div className="input">
                         <input
                         type="text"

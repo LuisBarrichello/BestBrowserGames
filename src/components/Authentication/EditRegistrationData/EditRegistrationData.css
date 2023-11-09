@@ -5,6 +5,25 @@ main {
     justify-content: center;
 }
 
+fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    border: none;
+}
+
+.form-section { 
+    display: flex;
+    flex-direction: column; 
+    width: 100%;
+}
+
+.form-section label {
+    margin-bottom: 1rem
+}
+
 .edit-registration-form .title {
     font-weight: 700;
     font-size: 3rem;
@@ -50,7 +69,7 @@ input {
 
 .button-submit {
     text-align: center;
-    width: 70%;
+    width: 50%;
     border-radius: .6rem;
     padding: 2.3rem 0;
     background-color: var(--purple-dark);
