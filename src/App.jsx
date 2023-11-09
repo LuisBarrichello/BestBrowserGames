@@ -19,7 +19,7 @@ function App() {
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/register' element={<Register/>}></Route>
         <Route path='/registergame' element={<RegisterGame/>}></Route>
-        <Route path='/editregistrationdata' element={<EditRegistrationData/>}></Route>
+        <Route path='/editdatamyaccount' element={<EditRegistrationData/>}></Route>
         <Route path='/registercategory' element={<RegisterCategory/>}></Route>
         <Route path='/myaccount' element={<MyAccount/>}></Route>
       </Routes>

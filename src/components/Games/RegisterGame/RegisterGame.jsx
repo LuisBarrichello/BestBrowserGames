@@ -2,10 +2,12 @@ import "./RegisterGame.css";
 import Footer from "../../Common/Footer/Footer";
 import Header from "../../Common/Header/Header";
 import { jwtDecode } from "jwt-decode";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 function RegisterGame() {
-    const [formData, setFormData] = useState({
+    const [decodeState, setDecodeState] = useState(null)
+    const [formDataGame, setFormDataGame] = useState({
         name: '',
         category: {
             _id: '',
@@ -17,21 +19,48 @@ function RegisterGame() {
         videoURL: ""
     })
 
-    /* VERIFICAR ROLE PARA USUARIO CADASTRAR CATEGORIA */
+    const getToken = () => {
+        const token = Cookies.get('token');
+        const dataUserDecoded = jwtDecode(token)
+
+        return dataUserDecoded
+    }
+
+    const verifyRoleUser = () => {
+        try {
+            const dataUserDecoded = getToken()
+            setDecodeState(dataUserDecoded)
+
+            if(dataUserDecoded.roles[0] === 'admin') {
+                return true
+            } else {
+                alert('Você não possuí permissão para cadastrar')
+                window.location.href = '/'
+                return false
+            }
+        } catch (error) {
+            console.error('Error decoding token:', error);
+        }
+    }
+
+    useEffect(() => {
+        verifyRoleUser()
+    }, [])
+
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
     
         const newGame = {
-            name: formData.name,
+            name: formDataGame.name,
             category: {
                 _id: null,
-                name: formData.category.name,
+                name: formDataGame.category.name,
             },
-            description: formData.description,
-            url: formData.url,
-            imageURL: formData.imageURL,
-            videoURL: formData.videoURL,
+            description: formDataGame.description,
+            url: formDataGame.url,
+            imageURL: formDataGame.imageURL,
+            videoURL: formDataGame.videoURL,
         };
 
         console.log(newGame)
@@ -43,21 +72,21 @@ function RegisterGame() {
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         if (name === 'category.name') {
-            setFormData({
-                ...formData,
+            setFormDataGame({
+                ...formDataGame,
                 category: {
-                    ...formData.category,
+                    ...formDataGame.category,
                     name: value,
                 },
             });
         } else {
-            setFormData({
-                ...formData,
+            setFormDataGame({
+                ...formDataGame,
                 [name]: value,
             });
         }
 
-        console.log(formData)
+        console.log(formDataGame)
     };
 
     const handleFecthAPI = async (newGame) => {
@@ -81,7 +110,7 @@ function RegisterGame() {
     
                 if (response.ok) {
                     // Limpa o formulário
-                    setFormData({
+                    setFormDataGame({
                         name: "",
                         category: {
                             _id: "",

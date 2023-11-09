@@ -1,6 +1,7 @@
 import "../Authentication.css"
 import Logo from "../../Common/Logo/Logo"
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 function Register() {
     const [formData, setFormData] = useState({
@@ -35,15 +36,19 @@ function Register() {
             
             const response = await fetch(apiUrl, requestData)
 
-            const data = await response.json();
-            console.log(data);
+            if (response.status === 201) {
+                const data = await response.json();
+                if ('token' in data) {
+                    Cookies.set('token', data.token, { expires: 1 })
 
-            if (!response.ok) {
-                throw new Error(`Erro ao cadastrar - ${response.message}`);
+                    alert("Usuário registrado com sucesso!");
+                    window.location.href = "/";
+                }
+            } else {
+                if (!response.ok) {
+                    throw new Error(`Erro ao cadastrar - ${response.message}`);
+                }
             }
-
-            alert("Usuário registrado com sucesso!");
-            window.location.href = "/"
 
         } catch (error) {
             console.error(error)

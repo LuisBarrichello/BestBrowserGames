@@ -2,13 +2,15 @@ import Logo from "../Logo/Logo"
 import { Link } from "react-router-dom"
 import IconResearch from "../../../assets/images/icon-research.svg"
 import "./header.css"
+import Cookies from "js-cookie"
 import "../../../assets/css/main.css"
 
 function Header() {
     
     const renderLogginOrMyAccount = () =>  {
-        const tokenLocalStorage = localStorage.getItem('token')
-        if(tokenLocalStorage !== null) {
+        const tokenCookie = Cookies.get('token')
+        console.log(tokenCookie)
+        if(tokenCookie !== null && tokenCookie !== undefined) {
             return (
                 <Link to="/myaccount" className="links-pages">
                     <li>Minha Conta</li>
@@ -27,10 +29,6 @@ function Header() {
             )
         }
     }
-
-    /* const researchGame = () => {
-
-    } */
 
     return (
         <header>

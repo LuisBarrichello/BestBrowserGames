@@ -2,6 +2,7 @@ import { useState } from 'react';
 import eyeIcon from '../../../assets/images/eye.svg';
 import eyeIconOff from '../../../assets/images/eye-off.svg'
 import Logo from "../../Common/Logo/Logo";
+import Cookies from 'js-cookie';
 import "../Authentication.css"
 
 function Login() {
@@ -40,7 +41,8 @@ function Login() {
                 console.log(data);
 
                 if ('token' in data) {
-                    localStorage.setItem('token', data.token);
+                    Cookies.set('token', data.token, { expires: 1 })
+                    /* localStorage.setItem('token', data.token); */
                     window.location.href = "/";
                 }
             } else {
