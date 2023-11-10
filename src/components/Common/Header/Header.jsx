@@ -9,7 +9,6 @@ function Header() {
     
     const renderLogginOrMyAccount = () =>  {
         const tokenCookie = Cookies.get('token')
-        console.log(tokenCookie)
         if(tokenCookie !== null && tokenCookie !== undefined) {
             return (
                 <Link to="/myaccount" className="links-pages">

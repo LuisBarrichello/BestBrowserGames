@@ -91,17 +91,19 @@ function RegisterGame() {
 
     const handleFecthAPI = async (newGame) => {
         try {
-            const token = localStorage.getItem('token');
-            const decoce = jwtDecode(token)
-            const { roles } = decoce
+            const token = Cookies.get('token');
+            console.log(token)
+            const decode = jwtDecode(token)
+            const { roles } = decode
+            console.log(roles)
 
-            if(roles === 'admn') {
+            if(roles[0] === 'admn') {
                 const apiUrl = 'https://api-best-browser-games-github-luisbarrichello.vercel.app/games';
                 const requestData = {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": token,
+                        "authorization": `Bearer ${token}`,
                     },
                         body: JSON.stringify(newGame),
                 }

@@ -1,40 +1,70 @@
 import "./RegisterCategory.css";
 import Footer from "../../Common/Footer/Footer";
 import Header from "../../Common/Header/Header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 
 function RegisterCategory() {
-    const [ nameCatedory, setNameCategory] = useState('')
+    const [ nameCategory, setNameCategory] = useState('')
+    const [decodeState, setDecodeState] = useState(null);
 
-    /* VERIFICAR ROLE PARA USUARIO CADASTRAR CATEGORIA */
+    /* Verifica se o usuario tem permissao para cadastra */
+    const getToken = () => {
+        const token = Cookies.get('token');
+        console.log(token)
+        const dataUserDecoded = jwtDecode(token)
+        return dataUserDecoded
+    };
+
+    const verifyRoleUser = () => {
+        try {
+            const dataUserDecoded = getToken()
+            setDecodeState(dataUserDecoded)
+            if(dataUserDecoded.roles[0] === 'admin') {
+                return true
+            } else {
+                alert('Você não possuí permissão para cadastrar')
+                window.location.href = '/'
+                return false
+            }
+        } catch (error) {
+            console.error('Error decoding token:', error);
+        }
+    }
+
+    useEffect(() => {
+        verifyRoleUser()
+    }, [])
+
     
     const handleInputChange = (event) => {
         const { value } = event.target;
         setNameCategory(value)
-        console.log(nameCatedory)
+        console.log(nameCategory)
     }
 
     const handleFecthAPI = async ()  => {
         try {
+            const token = Cookies.get('token');
+            console.log(token);
+
             const apiUrl = 'https://api-best-browser-games-github-luisbarrichello.vercel.app/categories';
             const requestData = {
                 method: 'POST',
-                header: {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(nameCatedory)
+                body: JSON.stringify({name: nameCategory})
             }
-
             const response = await fetch(apiUrl, requestData)
-
-            
             if (!response.ok) {
-                throw new Error(`HTTP error: ${response.status}`);
+                const error = await response.text();
+                throw new Error(`HTTP error: ${response.status}, ${error}`);
             }
-
             const data = await response.json();
             console.log(data);
-
         } catch (error) {
             console.error(error)
         }
