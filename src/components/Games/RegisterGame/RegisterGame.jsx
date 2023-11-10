@@ -6,12 +6,12 @@ import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 
 function RegisterGame() {
-    const [decodeState, setDecodeState] = useState(null)
+    const [decodeState, setDecodeState] = useState(null);
+    const [categories, setCategories] = useState([]);
     const [formDataGame, setFormDataGame] = useState({
         name: '',
         category: {
             _id: '',
-            name: ""
         }, 
         description: "",
         url: "",
@@ -22,31 +22,58 @@ function RegisterGame() {
     const getToken = () => {
         const token = Cookies.get('token');
         const dataUserDecoded = jwtDecode(token)
-
         return dataUserDecoded
     }
 
     const verifyRoleUser = () => {
         try {
-            const dataUserDecoded = getToken()
-            setDecodeState(dataUserDecoded)
-
-            if(dataUserDecoded.roles[0] === 'admin') {
-                return true
+            const token = getToken();
+            setDecodeState(token);
+            if (token.roles[0] === 'admin') {
+                return true;
             } else {
-                alert('Você não possuí permissão para cadastrar')
-                window.location.href = '/'
-                return false
+                alert('Você não possuí permissão para cadastrar');
+                window.location.href = '/';
+                return false;
             }
         } catch (error) {
             console.error('Error decoding token:', error);
         }
-    }
+    };
+    
 
     useEffect(() => {
-        verifyRoleUser()
+        verifyRoleUser();
+        requestCategorys(); 
     }, [])
 
+    const handleFecthAPI = async (newGame) => {
+        try {
+            const token = Cookies.get('token');
+            console.log(token)
+
+            const apiUrl = 'https://api-best-browser-games-github-luisbarrichello.vercel.app/games';
+            const requestData = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-access-token": `Bearer ${token}`,
+                },
+                    body: JSON.stringify(newGame),
+            }
+            const response = await fetch(apiUrl, requestData);
+            if (!response.ok) {
+                const error = await response.text();
+                throw new Error(`HTTP error: ${response.status}, ${error}`);
+            }
+
+            const data = await response.json();
+            alert(data.message);
+
+        } catch (error) {
+            console.error("Erro ao cadastrar o jogo" + error);
+        }        
+    }
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -67,16 +94,29 @@ function RegisterGame() {
 
         await handleFecthAPI(newGame)
 
+        setFormDataGame({
+            name: '',
+            category: {
+                _id: '',
+                name: ""
+            }, 
+            description: "",
+            url: "",
+            imageURL: "",
+            videoURL: ""
+        })
+
     };
     
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         if (name === 'category.name') {
+            const selectedCategory = categories.find(category => category.name === value)
             setFormDataGame({
                 ...formDataGame,
                 category: {
-                    ...formDataGame.category,
-                    name: value,
+                    ...formDataGame.category,   
+                    _id: selectedCategory ? selectedCategory._id : ''
                 },
             });
         } else {
@@ -89,51 +129,20 @@ function RegisterGame() {
         console.log(formDataGame)
     };
 
-    const handleFecthAPI = async (newGame) => {
+    const requestCategorys = async () => {
         try {
-            const token = Cookies.get('token');
-            console.log(token)
-            const decode = jwtDecode(token)
-            const { roles } = decode
-            console.log(roles)
-
-            if(roles[0] === 'admn') {
-                const apiUrl = 'https://api-best-browser-games-github-luisbarrichello.vercel.app/games';
-                const requestData = {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "authorization": `Bearer ${token}`,
-                    },
-                        body: JSON.stringify(newGame),
-                }
-    
-                const response = await fetch(apiUrl, requestData);
-    
-                if (response.ok) {
-                    // Limpa o formulário
-                    setFormDataGame({
-                        name: "",
-                        category: {
-                            _id: "",
-                            name: "",
-                        },
-                        description: "",
-                        url: "",
-                        imageURL: "",
-                        videoURL: "",
-                    })
-                } else {
-                    console.error("Erro ao cadastrar o jogo");
-                }
-            } else {
-                throw new Error('Você não possuí acesso para cadastrar jogo')
+            const apiUrl = 'https://api-best-browser-games-github-luisbarrichello.vercel.app/categories';
+            const response = await fetch(apiUrl)
+            if (!response.ok) {
+                const error = await response.text();
+                throw new Error(`HTTP error: ${response.status}, ${error}`);
             }
-
+            const data = await response.json()
+            setCategories(data)
         } catch (error) {
-            console.error("Erro ao cadastrar o jogo", error);
-        }        
-    }
+            console.error(error)
+        }
+    } 
 
     return (
         <main>
@@ -157,14 +166,21 @@ function RegisterGame() {
                 <div className="container-input">
                     <label htmlFor="category">Categoria</label>
                     <div className="input">
-                        <input
-                        type="text"
-                        name="category.name"
-                        id="category"
-                        placeholder="Categoria..."
-                        required
-                        onChange={handleInputChange}
-                        />
+                        <select 
+                            type="text"
+                            name="category.name"
+                            id="category"
+                            placeholder="Categoria..."
+                            required
+                            value={formDataGame.category.name} 
+                            onChange={handleInputChange}
+                        >
+                            <option value=""disabled>Selecione uma categoria</option>
+                            {categories.map(category => (
+                                <option key={category._id} value={category.name}>{category.name}</option>
+
+                            ))}
+                        </select>
                     </div>
                 </div>
 

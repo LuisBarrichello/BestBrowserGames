@@ -12,7 +12,6 @@ function RegisterCategory() {
     /* Verifica se o usuario tem permissao para cadastra */
     const getToken = () => {
         const token = Cookies.get('token');
-        console.log(token)
         const dataUserDecoded = jwtDecode(token)
         return dataUserDecoded
     };
@@ -47,13 +46,11 @@ function RegisterCategory() {
     const handleFecthAPI = async ()  => {
         try {
             const token = Cookies.get('token');
-            console.log(token);
-
             const apiUrl = 'https://api-best-browser-games-github-luisbarrichello.vercel.app/categories';
             const requestData = {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${token}`,
+                    "x-access-token": `Bearer ${token}`,
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({name: nameCategory})
@@ -64,16 +61,17 @@ function RegisterCategory() {
                 throw new Error(`HTTP error: ${response.status}, ${error}`);
             }
             const data = await response.json();
-            console.log(data);
+            alert(data.message);
         } catch (error) {
             console.error(error)
         }
     }
-
     
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        await handleFecthAPI()
+        await handleFecthAPI();
+
+        setNameCategory('');
     }
 
 
