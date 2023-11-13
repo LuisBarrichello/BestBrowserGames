@@ -15,12 +15,21 @@ app.use(bodyParser.json({
 app.use(bodyParser.urlencoded({extended:false}));
 
 //Habilita o CORS
-app.use((req, res, next) => {
+const cors = require("cors");
+const corsOptions = {
+    origin: "*",
+    credentials: true, //access-control-allow-credentials:true
+    optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
+app.options('*', cors());
+
+/* app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*')
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS' )
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, x-access-token, Authorization');
     next();
-});
+}); */
 
 const router = express.Router();
 

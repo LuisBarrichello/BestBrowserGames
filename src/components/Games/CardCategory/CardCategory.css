@@ -1,4 +1,5 @@
 .card-category {
+    padding: 2rem;
     background-color: var(--white);
     display: flex;
     flex-direction: column;
@@ -7,9 +8,8 @@
     border-radius: 1rem;
     box-shadow: 3px 3px 10px rgba(130, 132, 250, 0.69);
 
-
     width: 30rem;
-    height: 40rem;
+    height: 20rem;
     color: black;
 
     transition: transform 0.3s, box-shadow 0.3s;
@@ -20,21 +20,14 @@
     box-shadow: 4px 4px 15px rgba(130, 132, 250, 0.8);
 }
 
-.preview-category {
-    width: 100%;
-    height: 40%;
-    overflow: hidden;
-}
-
-.preview-category img {
-    border-radius: 1.3rem 1.3rem 0 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-
 .gameName-category {
+    width: 100%;
+}
+
+.card-name-category {
+    text-align: center;
+    font-size: 3rem;
+    color: var(--blue-marguerite-700);
     margin-bottom: 1.3rem;
 }
 
@@ -44,22 +37,10 @@
     font-weight: 500;
 }
 
-.wrapper-content-card-category {
-    padding: 1.3rem;
-}
-
-.container-description {
-    margin-bottom: 1.3rem;
-}
-
-.description {
-    font-size: 1.5rem;
-    color: var(--gray-600)
-}
-
 .link-button {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
+    flex-grow: 1;
 }

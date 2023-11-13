@@ -11,7 +11,7 @@ function RegisterGame() {
     const [formDataGame, setFormDataGame] = useState({
         name: '',
         category: {
-            _id: '',
+            _id: null,
         }, 
         description: "",
         url: "",
@@ -47,6 +47,19 @@ function RegisterGame() {
         requestCategorys(); 
     }, [])
 
+    const resetForm = () => {
+        setFormDataGame({
+            name: '',
+            category: {
+                _id: undefined,
+            },
+            description: "",
+            url: "",
+            imageURL: "",
+            videoURL: ""
+        });
+    }
+
     const handleFecthAPI = async (newGame) => {
         try {
             const token = Cookies.get('token');
@@ -81,8 +94,7 @@ function RegisterGame() {
         const newGame = {
             name: formDataGame.name,
             category: {
-                _id: null,
-                name: formDataGame.category.name,
+                _id: formDataGame.category._id,
             },
             description: formDataGame.description,
             url: formDataGame.url,
@@ -94,29 +106,18 @@ function RegisterGame() {
 
         await handleFecthAPI(newGame)
 
-        setFormDataGame({
-            name: '',
-            category: {
-                _id: '',
-                name: ""
-            }, 
-            description: "",
-            url: "",
-            imageURL: "",
-            videoURL: ""
-        })
-
+        resetForm()
     };
     
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        if (name === 'category.name') {
+        if (name === 'category._id') {
             const selectedCategory = categories.find(category => category.name === value)
             setFormDataGame({
                 ...formDataGame,
                 category: {
                     ...formDataGame.category,   
-                    _id: selectedCategory ? selectedCategory._id : ''
+                    _id: selectedCategory ? selectedCategory._id : null
                 },
             });
         } else {
@@ -168,17 +169,16 @@ function RegisterGame() {
                     <div className="input">
                         <select 
                             type="text"
-                            name="category.name"
+                            name="category._id"
                             id="category"
                             placeholder="Categoria..."
                             required
                             value={formDataGame.category.name} 
                             onChange={handleInputChange}
                         >
-                            <option value=""disabled>Selecione uma categoria</option>
+                            {/* <option value='Selecione uma categoria'  disabled>Selecione uma categoria</option> */}
                             {categories.map(category => (
                                 <option key={category._id} value={category.name}>{category.name}</option>
-
                             ))}
                         </select>
                     </div>
@@ -251,4 +251,4 @@ function RegisterGame() {
     );
 }
 
-export default RegisterGame;
+export default RegisterGame

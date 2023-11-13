@@ -45,7 +45,7 @@
     font-weight: 500;
 }
 
-.category {
+.card-game-category {
     font-size: 1.4rem;
     font-weight: 500;
     color: var(--purple-dark);
@@ -53,9 +53,10 @@
 
 .container-description {
     margin-bottom: 1.3rem;
+    flex-grow: 1;
 }
 
-.description {
+.description-card-game {
     font-size: 1.5rem;
     color: var(--gray-600)
 }

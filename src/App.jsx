@@ -9,6 +9,7 @@ import Register from "./components/Authentication/Register/Register"
 import EditRegistrationData from './components/Authentication/EditRegistrationData/EditRegistrationData';
 import RegisterCategory from './components/Games/RegisterCategory/RegisterCategory';
 import MyAccount from './components/Authentication/MyAccount/MyAccount';
+import RatingBrowserGames from "./pages/RatingBrowserGames/RatingBrowserGames"
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path='/editdatamyaccount' element={<EditRegistrationData/>}></Route>
         <Route path='/registercategory' element={<RegisterCategory/>}></Route>
         <Route path='/myaccount' element={<MyAccount/>}></Route>
+        <Route path='/ratingbrowsergames/:id' element={<RatingBrowserGames/>}></Route>
       </Routes>
   )
 }
