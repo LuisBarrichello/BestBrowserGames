@@ -71,9 +71,9 @@ function Home() {
                                 <span>Escolha entre uma variedade de jogos em diferentes categorias e descubra sua próxima aventura. De estratégia a ação, temos algo para todos.</span>
                             </div>
                             <div className="wrapper-cards">
-                                <ExploreGames></ExploreGames>
+                                <ExploreGames visibleCards={6}></ExploreGames>
                             </div>
-                            <Link className="show-more">
+                            <Link className="show-more" to="/exploreallgames">
                                 <SecondaryButton contentButton="Ver mais"></SecondaryButton>
                             </Link>
                         </section>

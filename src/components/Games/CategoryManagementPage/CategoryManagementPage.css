@@ -1,0 +1,47 @@
+.CategoryManagementPage-wrapper-cards-categories {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.3rem;
+}
+
+.CategoryManagementPage-wrapper-cards-categories div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: auto;
+}
+
+.CategoryManagementPage-wrapper-buttons {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.link-button {
+    text-decoration: none;
+}
+
+.CategoryManagementPage-wrapper-buttons button:nth-child(2):hover {
+    color: white;
+    background-color: rgb(210, 78, 78);
+    box-shadow: .3rem .3rem black;
+}
+
+.CategoryManagementPage-gameName-category {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: 
+    space-evenly;
+}
+
+.CategoryManagementPage-edit-name-category {
+    padding: 1rem;
+    margin-bottom: 1.3rem;
+    border-radius: .5rem;
+    background-color: var(--gray-400);
+}

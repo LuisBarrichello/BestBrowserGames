@@ -33,9 +33,10 @@ function Rating(props) {
 
     return (
         <>
+        {console.log(ratingsGame)}
             {ratingsGame.map((rating) => (
                 <div className="post-review" key={rating._id}>
-                    <span className="name-user">{rating.game.name}</span>
+                    <span className="name-user">{rating.user.name}</span>
                     <span className="description-review">{rating.description}</span>
                     <div className="wrapper-rating-star">
                         {[...Array(5)].map((_, i) => (

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import utils from "../../../assets/js/utils";
 import CardGame from "../CardGame/CardGame";
+import PropTypes from 'prop-types'; 
 
-function ExploreGames() {
+function ExploreGames({visibleCards}) {
     const [dataGames, setDataGames] = useState([]);
-    const [visibleCards, setVisibleCards] = useState(6);
     const [dataCategoriesForQuery, setDataCategoriesForQuery] = useState()
 
     const handleFecthAPICategories = async () => {
@@ -62,3 +62,7 @@ function ExploreGames() {
 }
 
 export default ExploreGames
+
+ExploreGames.propTypes = {
+    visibleCards: PropTypes.number
+}

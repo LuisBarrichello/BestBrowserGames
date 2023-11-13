@@ -42,7 +42,6 @@ function Recommendation() {
     }
 
     const getGamesNotRated = () => {
-
         const userToken = utils.getToken();
         if(userToken === undefined) {
             alert('Faça login para acessar as recomendações personalizadas')
@@ -60,8 +59,11 @@ function Recommendation() {
     useEffect(() => {
         handleFecthAPIGames()
         handleFecthAPICategories()
-        getGamesNotRated()
     }, [])
+    
+    useEffect(() => {
+        getGamesNotRated()
+    }, [dataGames])
 
     return (
         <>

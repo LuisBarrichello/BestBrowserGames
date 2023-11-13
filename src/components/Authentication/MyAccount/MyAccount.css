@@ -1,4 +1,5 @@
 .container-my-account-grid {
+    height: 70vh;
     width: 80%;
     margin: auto;
     display: grid;

@@ -88,7 +88,7 @@ function Header({setSearchResults = () => {}}) {
                     <Link to="/" className="links-pages">
                         <li>Home</li>
                     </Link>
-                    <Link className="links-pages">
+                    <Link className="links-pages" to="/exploreallgames">
                         <li>Explorar</li>
                     </Link>
                     <div className="wrapper-buttons-account">

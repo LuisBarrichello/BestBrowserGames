@@ -144,16 +144,6 @@ function Register() {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="container-input-checkbox">
-                        <div className="wrapper-input-checkbox">
-                            <input type="checkbox" name="terms-conditions" id="terms-conditions" onChange={handleInputChange}/>
-                            <p>Eu concordo com os <a href="#">termos e condições</a></p>
-                        </div>
-                        <div className="wrapper-input-checkbox">
-                            <input type="checkbox" name="terms-conditions" id="terms-conditions" onChange={handleInputChange}/>
-                            <p>Gostaria de ser informado sobre as últimas notícias e dicas</p>
-                        </div>
-                    </div> */}
                     <button className="button-login">Entrar</button>
                 </form>
             </div>

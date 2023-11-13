@@ -37,19 +37,36 @@ function MyAccount() {
         window.location.href = './'
     }
 
+    const formatDate = (date) => {
+        const dateObj = new Date(date);
+        const formattedDate = dateObj.toLocaleDateString('pt-BR');
+        return formattedDate;
+    }
+
     return (
         <>
             <Header></Header>
             <main className={decodeState?.roles[0] === 'admin' ? "container-my-account-grid" : 'container-my-account-flex'} >
                 {decodeState?.roles[0] === 'admin' ? (
                     <div className="wrapper-section-register">
-                        <h2>Cadastrar</h2>
-                        <Link to='/registergame'>
-                            <ThirdButton text="Cadastrar Game"></ThirdButton>
-                        </Link>
-                        <Link to='/registercategory'>
-                            <ThirdButton text="Cadastrar Categoria"></ThirdButton>
-                        </Link>
+                        <div className="wrapper-section-register">
+                            <h2>Cadastrar</h2>
+                            <Link to='/registergame'>
+                                <ThirdButton text="Cadastrar Game"></ThirdButton>
+                            </Link>
+                            <Link to='/registercategory'>
+                                <ThirdButton text="Cadastrar Categoria"></ThirdButton>
+                            </Link>
+                        </div>
+                        <div className="wrapper-section-register">
+                            <h2>Editar</h2>
+                            <Link to='/gamemanagementpage'>
+                                <ThirdButton text="Editar Games"></ThirdButton>
+                            </Link>
+                            <Link to='/categorymanagementpage'>
+                                <ThirdButton text="Editar Categorias"></ThirdButton>
+                            </Link>
+                        </div>
                     </div>
                 ) : null}
                 <div className="container-data">
@@ -61,7 +78,7 @@ function MyAccount() {
                         </div>
                         <p>Email: {decodeState?.email}</p>
 
-                        <p>Data de nascimento: {decodeState?.birthDate}</p>
+                        <p>Data de nascimento: {decodeState && decodeState.birthDate ? formatDate(decodeState?.birthDate) : ''}</p>
                         <p>País: {decodeState?.country}</p>
 
                         <p>Estado: {decodeState?.state}</p>
@@ -71,8 +88,8 @@ function MyAccount() {
 
                         <ThirdButton text="Logout" onClick={handleLogout}></ThirdButton>
                         
-                        <Link to="./editdatamyaccount">
-                            <ThirdButton text="Editar dados" onClick={handleLogout}></ThirdButton>
+                        <Link to="/editdatamyaccount">
+                            <ThirdButton text="Editar dados"></ThirdButton>
                         </Link>
 
                     </div>
