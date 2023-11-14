@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import utils from "../../../assets/js/utils";
 import { jwtDecode } from "jwt-decode";
 import CardGame from "../CardGame/CardGame";
+import PropTypes from 'prop-types'
 
 
-function Recommendation() {
+function Recommendation({visibleCards}) {
     const [dataGames, setDataGames] = useState([]);
     const [gamesNotRated, setGamesNotRated] = useState([])
-    const [visibleCards, setVisibleCards] = useState(6)
     const [dataCategoriesForQuery, setDataCategoriesForQuery] = useState()
 
     const handleFecthAPIGames = async () => {
@@ -56,6 +56,7 @@ function Recommendation() {
         setGamesNotRated(gamesNotRatedForUser)
     }
 
+
     useEffect(() => {
         handleFecthAPIGames()
         handleFecthAPICategories()
@@ -84,3 +85,7 @@ function Recommendation() {
 }
 
 export default Recommendation
+
+Recommendation.propTypes = {
+    visibleCards: PropTypes.number
+}

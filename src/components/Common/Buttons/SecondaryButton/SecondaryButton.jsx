@@ -2,10 +2,10 @@ import "./SecondaryButton.css"
 import PropTypes from "prop-types" 
 
 function SecondaryButton(props) {
-  const { contentButton } = props
+  const { contentButton, OnClick } = props
 
   return (
-    <button className="button">
+    <button onClick={OnClick} className="button">
       {contentButton}
     </button>
   );
@@ -15,4 +15,5 @@ export default SecondaryButton;
 
 SecondaryButton.propTypes = {
   contentButton: PropTypes.string.isRequired,
+  OnClick: PropTypes.func
 }

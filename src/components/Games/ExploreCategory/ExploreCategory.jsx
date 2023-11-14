@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import utils from "../../../assets/js/utils";
 import CardCategory from "../CardCategory/CardCategory";
+import PropTypes from "prop-types"
 
-function ExploreCategory() {
+function ExploreCategory({showMoreCards}) {
     const [dataCategories, setDataCategories] = useState([])
 
     const handleFecthAPICategories = async () => {
@@ -26,8 +27,9 @@ function ExploreCategory() {
 
     return (
         <>
-            {dataCategories.slice(0, 6).map((category) => (
+            {dataCategories.slice(0, showMoreCards).map((category) => (
                 <CardCategory
+                    Path={`/gamebycategory/${category._id}`}
                     key={category._id}
                     Category={
                         (dataCategories.find((categoryState) => category._id === categoryState._id)).name
@@ -39,3 +41,7 @@ function ExploreCategory() {
 }
 
 export default ExploreCategory
+
+ExploreCategory.propTypes = {
+    showMoreCards: PropTypes.number
+}

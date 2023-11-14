@@ -73,10 +73,6 @@ function RatingBrowserGames() {
         }
     }
 
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
-
     const handleSetUserAndGame = () => {
         const tokenUser = utils.getToken()
         const dataUserDecoded = jwtDecode(tokenUser)

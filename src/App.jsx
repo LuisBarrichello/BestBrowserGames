@@ -13,7 +13,7 @@ import RatingBrowserGames from "./pages/RatingBrowserGames/RatingBrowserGames"
 import ExploreAllGames from './components/Games/ExploreAllGames/ExploreAllGames';
 import CategoryManagementPage from './components/Games/CategoryManagementPage/CategoryManagementPage';
 import GameManagementPage from './components/Games/GameManagementPage/GameManagementPage';
-
+import GameByCategory from './components/Games/GameByCategory/GameByCategory';
 
 function App() {
 
@@ -30,6 +30,7 @@ function App() {
         <Route path='/exploreallgames' element={<ExploreAllGames />}></Route>
         <Route path='/categorymanagementpage' element={<CategoryManagementPage />}></Route>
         <Route path='/gamemanagementpage' element={<GameManagementPage />}></Route>
+        <Route path='/gamebycategory/:id' element={<GameByCategory />}></Route>
       </Routes>
   )
 }

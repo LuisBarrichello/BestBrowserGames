@@ -12,6 +12,8 @@ import Recommendation from "../../components/Games/Recommendation/Recommendation
 
 
 function Home() {
+    const [showMoreCardsQuantityCategories, setShowMoreCardsQuantityCategories] = useState(6)
+    const [showMoreCardsQuantityRecommendation, setShowMoreCardsQuantityRecommendation] = useState(6)
     const [searchResults, setSearchResults] = useState([]);
     const [dataCategoriesForQuery, setDataCategoriesForQuery] = useState([]);
     const [showSearchResults, setShowSearchResults] = useState(false);
@@ -29,6 +31,14 @@ function Home() {
         } catch (error) {
             console.error(error)
         }
+    }
+
+    const handleClickShowMoreCardsCategories = () => {
+        setShowMoreCardsQuantityCategories(showMoreCardsQuantityCategories + 6)
+    }
+    const handleClickShowMoreCardsRecommendation = () => {
+        setShowMoreCardsQuantityRecommendation(showMoreCardsQuantityRecommendation + 6)
+        console.log(showMoreCardsQuantityRecommendation)
     }
     
     useEffect(() => {
@@ -84,24 +94,24 @@ function Home() {
                                 <span>Escolha entre uma variedade de jogos em diferentes categorias e descubra sua próxima aventura. De estratégia a ação, temos algo para todos.</span>
                             </div>
                             <div className="wrapper-cards">
-                                <ExploreCategory></ExploreCategory>
+                                <ExploreCategory showMoreCards={showMoreCardsQuantityCategories}></ExploreCategory>
                             </div>
-                            <Link className="show-more">
-                                <SecondaryButton contentButton="Ver mais"></SecondaryButton>
-                            </Link>
+                            <div className="show-more">
+                                <SecondaryButton OnClick={handleClickShowMoreCardsCategories} contentButton="Ver mais"></SecondaryButton>
+                            </div>
                         </section>
 
                         <section className="container-featured-categories">
-                        <div className="featured-categories-container-title">
+                            <div className="featured-categories-container-title">
                                 <h2>Recomendações de browser games</h2>
                                 <span>Deixe-nos ajudá-lo a encontrar seu próximo jogo favorito. Nossas recomendações personalizadas são baseadas em seus gostos e preferências. Explore, jogue e divirta-se!</span>
                             </div>
                             <div className="wrapper-cards">
-                                <Recommendation></Recommendation>
+                                <Recommendation visibleCards={showMoreCardsQuantityRecommendation}></Recommendation>
                             </div>
-                            <Link className="show-more">
-                                <SecondaryButton contentButton="Ver mais"></SecondaryButton>
-                            </Link>
+                            <div className="show-more">
+                                <SecondaryButton OnClick={handleClickShowMoreCardsRecommendation} contentButton="Ver mais"></SecondaryButton>
+                            </div>
                         </section>
                     </>
                 )}

@@ -40,7 +40,6 @@ function Header({setSearchResults = () => {}}) {
                 setSearchResults(results);
             }
             setSearchResults(results);
-            console.log(results)
         } else {
             setSearchResults([]);
         }

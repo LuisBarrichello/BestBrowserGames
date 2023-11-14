@@ -27,7 +27,7 @@ function GameManagementPage() {
         }
     } 
 
-    const handleFecthAPIGames = async () => {
+    const handleFetchAPIGames = async () => {
         try {
             const apiUrl = utils.API_BASE_URL;
             const response = await fetch(`${apiUrl}/games`)
@@ -53,7 +53,7 @@ function GameManagementPage() {
                 headers: {
                     "Content-Type": "application/json",
                     "x-access-token": `Bearer ${token}`,
-                },
+                },  
                 body: JSON.stringify(editingGame)
             };
             const response = await fetch(`${apiUrl}/games/${editingGame._id}`, requestData)
@@ -62,9 +62,6 @@ function GameManagementPage() {
                 const error = await response.text();
                 throw new Error(`HTTP error: ${response.status}, ${error}`);
             }
-    
-            /* handleFecthAPIGames() */
-    
             setIsEditing(false)
         } catch (error) {
             console.log(error)
@@ -96,7 +93,7 @@ function GameManagementPage() {
                 throw new Error(`HTTP error: ${response.status}, ${error}`);
             }
 
-            handleFecthAPIGames()
+            handleFetchAPIGames()
         } catch (error) {
             console.log(error)
         }
@@ -104,15 +101,24 @@ function GameManagementPage() {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setEditingGame(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-        console.log(editingGame)
+        if (name === 'category._id') {
+            const selectedCategory = categories.find(category => category._id === value)
+            setEditingGame(prevState => ({
+                ...prevState,
+                category: {
+                    _id: selectedCategory ? selectedCategory._id : null
+                },
+            }));
+        } else {
+            setEditingGame(prevState => ({
+                ...prevState,
+                [name]: value
+            }));
+        }
     }
 
     useEffect(() => {
-        handleFecthAPIGames()
+        handleFetchAPIGames()
         requestCategorys()
     }, [])
 
@@ -133,44 +139,38 @@ function GameManagementPage() {
                                     <input
                                         type="text"
                                         id="imageURL"
+                                        name="imageURL"
                                         value={editingGame.imageURL}
-                                        onChange={(e) =>
-                                            setEditingGame({ ...editingGame, imageURL: e.target.value })
-                                        }
+                                        onChange={handleInputChange}
                                     />
                                     <label htmlFor="name">Name:</label>
                                     <input
                                         type="text"
                                         id="name"
+                                        name="name"
                                         value={editingGame.name}
-                                        onChange={(e) =>
-                                            setEditingGame({ ...editingGame, name: e.target.value })
-                                        }
+                                        onChange={handleInputChange}
                                     />
                                     <label htmlFor="category">Category:</label>
                                     <select 
                                         type="text"
-                                        name="category._id"
+                                        name='category._id'
                                         id="category"
                                         placeholder="Categoria..."
                                         required
-                                        value={editingGame.category.name} 
-                                        onChange={(e) =>
-                                            setEditingGame({ ...editingGame, description: e.target.value })
-                                        }
+                                        value={editingGame.category._id } 
+                                        onChange={handleInputChange}
                                     >
-                                        {/* <option value='Selecione uma categoria'  disabled>Selecione uma categoria</option> */}
                                         {categories.map(category => (
-                                            <option key={category._id} value={category.name}>{category.name}</option>
+                                            <option key={category._id} value={category._id}>{category.name}</option>
                                         ))}
                                     </select>
                                     <label htmlFor="description">Description:</label>
                                     <textarea
                                         id="description"
+                                        name="description"
                                         value={editingGame.description}
-                                        onChange={(e) =>
-                                            setEditingGame({ ...editingGame, description: e.target.value })
-                                        }
+                                        onChange={handleInputChange}
                                     />
                                     <div className="GameManagementPage-wrapper-buttons">
                                         <ThirdButton
@@ -202,7 +202,7 @@ function GameManagementPage() {
                                                 text="Editar">
                                             </ThirdButton>
                                             <ThirdButton 
-                                                onClick={() => handleDeleteClick()}  text="Deletar">
+                                                onClick={() => handleDeleteClick(game)}  text="Deletar">
                                             </ThirdButton>
                                     </div>
                                     </>
