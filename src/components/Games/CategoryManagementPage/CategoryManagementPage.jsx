@@ -94,7 +94,10 @@ function CategoryManagementPage() {
         <>
             <Header></Header>
             <main>
-                <ul className="CategoryManagementPage-wrapper-cards-categories">
+                <div>
+                    <h1>Edição de categorias</h1>
+                </div>
+                <section className="CategoryManagementPage-wrapper-cards-categories">
                     {dataCategoriesForQuery.map((category) => (
                         <div key={category._id} className="card-category">
                             <div className="CategoryManagementPage-gameName-category">
@@ -121,7 +124,7 @@ function CategoryManagementPage() {
                             </div>
                         </div>
                     ))}
-                </ul>
+                </section>
             </main>
             <Footer></Footer>
         </>

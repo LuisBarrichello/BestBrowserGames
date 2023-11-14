@@ -2,7 +2,7 @@
     width: 80%;
     display: flex;
     flex-wrap: wrap;
-    gap: 1.3rem;
+    gap: 2rem;
 }
 
 .CategoryManagementPage-wrapper-cards-categories div {
