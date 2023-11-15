@@ -1,7 +1,7 @@
 import  { Component } from 'react';
 import LogoIconGamer from '../../../assets/images/logo-game-controller.svg'
-import './Logo.css';
 import { Link } from 'react-router-dom';
+import './Logo.css';
 
 class Logo extends Component {
     render() {
