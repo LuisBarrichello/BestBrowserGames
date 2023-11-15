@@ -48,9 +48,9 @@ function MyAccount() {
             <Header></Header>
             <main className={decodeState?.roles[0] === 'admin' ? "container-my-account-grid" : 'container-my-account-flex'} >
                 {decodeState?.roles[0] === 'admin' ? (
-                    <div className="wrapper-section-register">
+                    <div className="container-register">
                         <div className="wrapper-section-register">
-                            <h2>Cadastrar</h2>
+                            <h2>Cadastros</h2>
                             <Link to='/registergame'>
                                 <ThirdButton text="Cadastrar Game"></ThirdButton>
                             </Link>
@@ -59,7 +59,7 @@ function MyAccount() {
                             </Link>
                         </div>
                         <div className="wrapper-section-register">
-                            <h2>Editar</h2>
+                            <h2>Edições</h2>
                             <Link to='/gamemanagementpage'>
                                 <ThirdButton text="Editar Games"></ThirdButton>
                             </Link>

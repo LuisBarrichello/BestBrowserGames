@@ -86,3 +86,9 @@ button:hover .circle .icon.arrow {
 button:hover .button-text {
     color: #fff;
 }
+
+@media (min-width: 0px) and (max-width: 767px) {
+    .button-text {
+        font-size: 1.2rem;
+    }
+}

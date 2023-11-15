@@ -27,7 +27,7 @@ function Footer() {
                 </div>
             </div>
             <div className="developedBy">
-                <span>Desenvolvido por: Luís Gabriel Barrichello</span>
+                <span className="developedByPerson">Desenvolvido por: Luís Gabriel Barrichello</span>
                 <a href="https://github.com/LuisBarrichello" target="_blank" rel="noopener noreferrer">
                     <img src={IconGithub} alt="" />
                     <span>Github</span>

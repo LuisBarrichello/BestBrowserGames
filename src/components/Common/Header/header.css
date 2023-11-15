@@ -34,6 +34,8 @@ header {
     display: flex;
     gap: 3rem;
     margin-left: 7rem;
+
+    transition: all 0.5s ease-in-out;
 }
 
 .links-pages {
@@ -57,4 +59,68 @@ header {
     border-radius: .3rem;
     border: 1px solid var(--blue-marguerite-950);
     background: var(--blue-marguerite-50);
+}
+
+.wrapper-buttons-account a:hover {
+    color: white;
+    background: var(--blue-marguerite-800);
+    transition: all .2s ease-in-out;
+}
+
+.menu {
+    display: none;
+    
+}
+
+.wrapper-links-pages.open {
+    display: flex;
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .wrapper-links-pages {
+        gap: 1.5rem;
+        margin-left: 3rem;
+    }
+}
+
+@media (min-width: 530px) and (max-width: 767px) {
+    .wrapper-links-pages {
+        gap: 1rem;
+        margin-left: 1.5rem;
+       /*  flex-direction: column; */
+    }
+
+    .container-input-research {
+        width: 30%;
+    }
+}
+
+@media (max-width: 530px) {
+
+    .container-input-research {
+        width: 40%;
+    }
+
+    .wrapper-links-pages {
+        display: none;
+    }
+
+    .menu {
+        margin-left: 2rem;
+        display: flex;
+    }
+
+    .wrapper-links-pages.open {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        margin-left: 0;
+        width: 100%;
+        background-color: black;
+        position: absolute;
+        top: 11rem;
+        left: 0;
+    }
 }

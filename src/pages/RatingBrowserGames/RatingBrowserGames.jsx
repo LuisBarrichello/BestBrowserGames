@@ -11,9 +11,9 @@ import Rating from "../../components/Rating/Rating"
 
 
 function RatingBrowserGames() {
+    const [ratingsGame, setRatingsGame] = useState([])
     const [dataGame, setDataGame] = useState({});
     const [isLoaded, setIsLoaded] = useState(false);
-    const [error, setError] = useState(null);
     const [rating, setRating] = useState({
         score: 0,
         description: '',
@@ -23,6 +23,22 @@ function RatingBrowserGames() {
 
     const { id } = useParams();
     const apiUrl = utils.API_BASE_URL
+
+    const handleGetRatings = async () => {
+        try {
+            const apiUrl = utils.API_BASE_URL;
+            const response = await fetch(`${apiUrl}/games/${dataGame._id}/ratings`)
+    
+            if(!response.ok) {
+                const error = await response.text();
+                throw new Error(`HTTP error: ${response.status}, ${error}`);
+            }
+            const dataRatingsGame = await response.json()
+            setRatingsGame(dataRatingsGame)
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     const handleFecthAPIGame = async () => {
         try {
@@ -69,7 +85,6 @@ function RatingBrowserGames() {
 
         } catch (error) {
             console.error(error)
-            setError('Ocorreu um erro ao carregar o jogo. Por favor, tente novamente.');
         }
     }
 
@@ -98,14 +113,19 @@ function RatingBrowserGames() {
             game: '',
             user: '',
         })
-
-        
     }
 
     useEffect(() => {
         handleFecthAPIGame();
-        handleSetUserAndGame()
+        handleSetUserAndGame();
     }, [id]);
+
+    useEffect(() => {
+        if (dataGame._id) {
+            handleGetRatings();
+        }
+    }, [dataGame._id]);
+    
 
     if (!isLoaded) {
         return <div>Loading...</div>;
@@ -123,76 +143,78 @@ function RatingBrowserGames() {
     return (
         <>
             <Header></Header>
-            <main>
-                <div className="container-title-page">
-                    <h1 className="title">Detalhes do Jogo</h1>
-                    <span>Conheça mais sobre este emocionante jogo de categoria {dataGame.category.name}. Aventure-se em {dataGame.name} e compartilhe sua avaliação.</span>
-                </div>
-                <section className="container-game-infos">
-                    <div className="title-preview">
-                        <h2 className="title-game">{dataGame.name}</h2>
-                        <div className="preview">
-                            <img src={dataGame.imageURL} alt="" />
-                        </div>
+            <main className="main-rating-game">
+                <section className="continer-rating">
+                    <div className="container-title-page">
+                        <h1 className="title">Detalhes do Jogo</h1>
+                        <span>Conheça mais sobre este emocionante jogo de categoria {dataGame.category.name}. Aventure-se em {dataGame.name} e compartilhe sua avaliação.</span>
                     </div>
-                    <div className="wrapper-infos-game">
-                        <div className="gamen-now">
-                            <a href={dataGame.url}>
-                                <ThirdButton text="Jogar agora"></ThirdButton>
-                            </a>
-                        </div>
-                        <div className="container-description-page-game">
-                            <h3 className="description-title">Descrição</h3>
-                            <p className="description-page-game">{dataGame.description}</p>
-                        </div>
-                        <div className="category">
-                            <h3 className="category-title-page-game">Categoria</h3>
-                            <span>{dataGame.category.name}</span>
-                        </div>
-                    </div>
-                </section>
-                <section className="container-review">
-                    <div className="container-review-title">
-                        <h2>Avaliações</h2>
-                        <span>Deixe sua avaliação</span>
-                    </div>
-                    <form  onSubmit={handleFormSubmit} className="container-input-review">
-                        <div className="container-input-review">
-                            <label htmlFor="review-text"></label>
-                            <textarea 
-                                name="description" 
-                                id="review-text" 
-                                cols="30" 
-                                rows="4" 
-                                placeholder="Digite sua avaliação aqui"
-                                onChange={handleInputChange}
-                            ></textarea>
-                        </div>
-                        <div className="container-flex">
-                            <div className="container-input-review-stars">
-                                {[...Array(5)].map((_, i) => (
-                                    <span key={i}>
-                                        <input
-                                            type="radio"
-                                            name="score"
-                                            id={`star${i + 1}`}
-                                            value={i + 1}
-                                            onChange={handleInputChange}
-                                        />
-                                        <label 
-                                            htmlFor={`star${i + 1}`}
-                                            className={i < rating.score ? 'star-selected' : ''}
-                                        >★</label>
-                                    </span>
-                                ))}
+                    <section className="container-game-infos">
+                        <div className="title-preview">
+                            <h2 className="title-game">{dataGame.name}</h2>
+                            <div className="preview">
+                                <img src={dataGame.imageURL} alt="" />
                             </div>
-                            <ThirdButton text="Avaliar" type="submit"></ThirdButton>
                         </div>
-                    </form>
-                    <div className="container-post-reviews">
-                        <Rating isLoaded={isLoaded} gameId={dataGame._id}></Rating>
-                        {/* REVIEWS AQUI */}
-                    </div>
+                        <div className="wrapper-infos-game">
+                            <div className="gamen-now">
+                                <a href={dataGame.url} target="blank" rel="noopener noreferrer">
+                                    <ThirdButton text="Jogar agora"></ThirdButton>
+                                </a>
+                            </div>
+                            <div className="container-description-page-game">
+                                <h3 className="description-title">Descrição</h3>
+                                <p className="description-page-game">{dataGame.description}</p>
+                            </div>
+                            <div className="category">
+                                <h3 className="category-title-page-game">Categoria</h3>
+                                <span>{dataGame.category.name}</span>
+                            </div>
+                        </div>
+                    </section>
+                    <section className="container-review">
+                        <div className="container-review-title">
+                            <h2>Avaliações</h2>
+                            <span>Deixe sua avaliação</span>
+                        </div>
+                        <form  onSubmit={handleFormSubmit} className="container-input-review">
+                            <div className="container-input-review">
+                                <label htmlFor="review-text"></label>
+                                <textarea 
+                                    name="description" 
+                                    id="review-text" 
+                                    cols="30" 
+                                    rows="4" 
+                                    placeholder="Digite sua avaliação aqui"
+                                    onChange={handleInputChange}
+                                ></textarea>
+                            </div>
+                            <div className="container-input-review-stars-button-submit">
+                                <div className="container-input-review-stars">
+                                    {[...Array(5)].map((_, i) => (
+                                        <span key={i}>
+                                            <input
+                                                type="radio"
+                                                name="score"
+                                                id={`star${i + 1}`}
+                                                value={i + 1}
+                                                onChange={handleInputChange}
+                                            />
+                                            <label 
+                                                htmlFor={`star${i + 1}`}
+                                                className={i < rating.score ? 'star-selected' : ''}
+                                            >★</label>
+                                        </span>
+                                    ))}
+                                </div>
+                                <ThirdButton text="Avaliar" type="submit"></ThirdButton>
+                            </div>
+                        </form>
+                        <div className="container-post-reviews">
+                            <Rating isLoaded={isLoaded} ratingsGame={ratingsGame} userID={rating.user} ></Rating>
+                            {/* REVIEWS AQUI */}
+                        </div>
+                    </section>
                 </section>
                 <Footer></Footer>
             </main>

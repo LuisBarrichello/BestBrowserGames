@@ -1,0 +1,22 @@
+.cotainer-edit-rating {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.cotainer-edit-rating button {
+    place-self: end;
+    width: fit-content;
+    padding: 0.9rem 1rem;
+    font-size: 1.1rem;
+}
+
+.wrapper-rating-star {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.star-selected-edit {
+    color: #ffcc00;
+}

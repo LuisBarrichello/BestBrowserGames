@@ -1,6 +1,14 @@
-main {
+.main-rating-game {
     width: 100%;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.continer-rating {
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,7 +25,7 @@ main {
 }
 
 .container-game-infos {
-    width: 80%;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
 
@@ -80,7 +88,7 @@ main {
 }
 
 .container-review {
-    width: 80%;
+    width: 100%;
     background-color: var(--bg-reviews);
     padding: 4rem;
     border-radius: 1.5rem;
@@ -103,7 +111,11 @@ main {
     all: unset;
 }
 
-.container-flex {
+.container-input-review textarea::placeholder {
+    color: var(--blue-marguerite-300);
+}
+
+.container-input-review-stars-button-submit {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -154,5 +166,74 @@ main {
 }
 
 .star-selected {
-    color: #ffcc00; /* Altere para a cor que você deseja para as estrelas selecionadas */
+    color: #ffcc00;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .preview {
+        width: 100%;
+    }
+
+    .continer-rating {
+        gap: 2.5rem;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .continer-rating {
+        gap: 2rem;
+    }
+
+    .container-game-infos {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .preview {
+        width: 100%;
+    }
+
+    .wrapper-infos-game {
+        gap: 2rem;
+    }
+
+    .gamen-now {
+        place-self: center;
+    }
+
+    .container-review {
+        padding: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .continer-rating {
+        gap: 2rem;
+    }
+
+    .container-game-infos {
+        gap: 2.5rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .preview {
+        width: 100%;
+    }
+
+    .wrapper-infos-game {
+        gap: 2rem;
+    }
+
+    .gamen-now {
+        place-self: center;
+    }
+
+    .container-review {
+        padding: 1.8rem;
+    }
+
+    .container-input-review-stars-button-submit {
+        flex-direction: column;
+    }
 }

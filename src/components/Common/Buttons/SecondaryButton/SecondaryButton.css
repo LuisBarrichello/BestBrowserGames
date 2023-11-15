@@ -8,6 +8,7 @@
     background: #FFF;
     padding: 1.3rem 6rem;
     box-shadow: .3rem .3rem var(--purple);
+    text-align: center;
 }
 
 button:active {

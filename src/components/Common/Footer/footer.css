@@ -45,6 +45,10 @@
     gap: 1rem;
 }
 
+.developedByPerson {
+    font-weight: 500;
+}
+
 .developedBy a {
     display: flex;
     align-items: center;
@@ -60,4 +64,21 @@
 
 .developedBy a img {
     margin-right: 1rem;
+}
+
+
+
+@media (max-width: 650px) {
+    .footer {
+        height: auto;
+        gap: 3rem;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 500px) {
+    .paragraph-copyright, 
+    .footer-legal {
+        font-size: 1.3rem;
+    }
 }

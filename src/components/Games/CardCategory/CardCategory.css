@@ -44,3 +44,10 @@
     width: 100%;
     flex-grow: 1;
 }
+
+@media (min-width: 0px) and (max-width: 767px) {
+    .card-category {
+        width: 25rem;
+        height: 15rem
+    }
+}
