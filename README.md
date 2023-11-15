@@ -56,6 +56,10 @@ O BestBrowserGames é uma comunidade web dedicada aos amantes de browser games, 
 - **jwt-decode:** Biblioteca para decodificar tokens JWT.
 - **Outras Tecnologias:** CSS, Javascript
 
+## Melhorias futuras:
+* Adicionar validações nos forms
+* Consumir uma api de estado e país
+
 ## Autor
 
 - Luís Gabriel V. Barrichello
