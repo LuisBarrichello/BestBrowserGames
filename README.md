@@ -9,7 +9,7 @@
 
 O BestBrowserGames é uma comunidade web dedicada aos amantes de browser games, proporcionando uma plataforma para compartilhar experiências, avaliações e descobrir novos jogos. Desenvolvida com o framework React, a aplicação visa criar uma experiência interativa e amigável para seus membros.
 
-* [Requisitos do projeto, você pode acessá-lo aqui](../requisitos.md)
+* [Requisitos do projeto, você pode acessá-lo aqui](https://github.com/LuisBarrichello/BestBrowserGames/blob/master/requisitos.md)
 
 ### Funcionalidades de Usuários
 
