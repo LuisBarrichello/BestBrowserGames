@@ -11,6 +11,7 @@ import Rating from "../../components/Rating/Rating"
 
 
 function RatingBrowserGames() {
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const [ratingsGame, setRatingsGame] = useState([])
     const [dataGame, setDataGame] = useState({});
     const [isLoaded, setIsLoaded] = useState(false);
@@ -90,11 +91,22 @@ function RatingBrowserGames() {
 
     const handleSetUserAndGame = () => {
         const tokenUser = utils.getToken()
+
+        if (!tokenUser) {
+            alert("Por favor, faça seu login ou cadastro para pode avaliar o jogo");
+            setIsUserLoggedIn(false);
+            return;
+        }
+
         const dataUserDecoded = jwtDecode(tokenUser)
+
+        console.log(dataUserDecoded)
 
         setRating({
             user: dataUserDecoded.id
         })
+
+        setIsUserLoggedIn(true);
     }
 
     const handleFormSubmit = async (event) => {
@@ -177,7 +189,8 @@ function RatingBrowserGames() {
                             <h2>Avaliações</h2>
                             <span>Deixe sua avaliação</span>
                         </div>
-                        <form  onSubmit={handleFormSubmit} className="container-input-review">
+                        {isUserLoggedIn && (
+                            <form  onSubmit={handleFormSubmit} className="container-input-review">
                             <div className="container-input-review">
                                 <label htmlFor="review-text"></label>
                                 <textarea 
@@ -210,6 +223,8 @@ function RatingBrowserGames() {
                                 <ThirdButton text="Avaliar" type="submit"></ThirdButton>
                             </div>
                         </form>
+                        )}
+                        
                         <div className="container-post-reviews">
                             <Rating isLoaded={isLoaded} ratingsGame={ratingsGame} userID={rating.user} ></Rating>
                             {/* REVIEWS AQUI */}
