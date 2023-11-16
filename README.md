@@ -2,6 +2,9 @@
 
 ### Neste projeto final do módulo de Framework de Front End I (React), tive a oportunidade de demonstrar minhas habilidades em React!
 
+## Deploy
+
+- Para visualizar e testar a aplicação, acesse [BestBrowserGames](https://best-browser-games-github-luisbarrichello.vercel.app/).
 
 ### Descrição do projeto
 
@@ -43,10 +46,6 @@ O BestBrowserGames é uma comunidade web dedicada aos amantes de browser games, 
 - **Adicionar, Editar ou deletar as Categorias:** O administrador pode editar a lista de categorias, criando novas ou alterando as existentes.
 - **Gestão de Browser Games, adicionando, editando ou deletando:** A capacidade de cadastrar, editar e excluir browser games, mantendo a plataforma atualizada e diversificada.
 
-## Deploy
-
-- Para visualizar e testar a aplicação, acesse [BestBrowserGames](url-do-deploy).
-
 ## Tecnologias
 
 - **React:** Framework principal para a construção da aplicação front-end.
@@ -55,6 +54,9 @@ O BestBrowserGames é uma comunidade web dedicada aos amantes de browser games, 
 - **js-cookie:** Biblioteca para manipulação de cookies em JavaScript.
 - **jwt-decode:** Biblioteca para decodificar tokens JWT.
 - **Outras Tecnologias:** CSS, Javascript
+
+## Screenshots
+![Home](../BrowserGameHub/src/assets/images/preview.png)
 
 ## Melhorias futuras:
 * Adicionar validações nos forms
