@@ -56,7 +56,7 @@ O BestBrowserGames é uma comunidade web dedicada aos amantes de browser games, 
 - **Outras Tecnologias:** CSS, Javascript
 
 ## Screenshots
-![Home](../BrowserGameHub/src/assets/images/preview.png)
+![Home](./src/assets/images/preview.png)
 
 ## Melhorias futuras:
 * Adicionar validações nos forms
