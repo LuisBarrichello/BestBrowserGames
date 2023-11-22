@@ -4,6 +4,7 @@ import eyeIconOff from '../../../assets/images/eye-off.svg'
 import Logo from "../../Common/Logo/Logo";
 import Cookies from 'js-cookie';
 import "../Authentication.css"
+import Footer from '../../Common/Footer/Footer';
 
 function Login() {
     const [formData, setFormData] = useState({
@@ -68,54 +69,57 @@ function Login() {
 
     
     return (
-        <main className="main-authentication">
-            <div className="hero-login">
-                <Logo></Logo>
-            </div>
-            <div className="container-login">
-                <h1 className="title">Junte-se ao jogo!</h1>
-                <p className="sub-title">Descubra. Avalie. Jogue. Sua jornada pelo mundo dos browser games começa aqui!</p>
-                <form onSubmit={handleSubmit} className="form">
-                    <div className="wrapper-form">
-                        <div className="container-input">
-                            <label htmlFor="email">E-mail</label>
-                            <div className="input">
-                                <input 
-                                    type="email" 
-                                    name="email" 
-                                    id="input-email" 
-                                    placeholder="Digite seu E-mail..." 
-                                    onChange={handleInputChange}
-                                />
-                            </div>
-                        </div>
-                        <div className="container-input">
-                            <label htmlFor="password">Senha</label>
-                            <div className="input">
-                                <input 
-                                    type={showPassword ? 'text' : 'password'}
-                                    name="password" 
-                                    id="password" 
-                                    placeholder="Digite sua senha..."
-                                    onChange={handleInputChange}
-                                />
-                                <button 
-                                    className="button-show-password"
-                                >
-                                    <img 
-                                        src={showPassword ? eyeIconOff : eyeIcon} 
-                                        alt="Show Password" 
-                                        className=""
-                                        onClick={togglePasswordVisibility}
+        <>
+            <Logo></Logo>
+            <main className="main-authentication">
+                <div className="hero-login">
+                </div>
+                <div className="container-login">
+                    <h1 className="title">Junte-se ao jogo!</h1>
+                    <p className="sub-title">Descubra. Avalie. Jogue. Sua jornada pelo mundo dos browser games começa aqui!</p>
+                    <form onSubmit={handleSubmit} className="form">
+                        <div className="wrapper-form">
+                            <div className="container-input">
+                                <label htmlFor="email">E-mail</label>
+                                <div className="input">
+                                    <input 
+                                        type="email" 
+                                        name="email" 
+                                        id="input-email" 
+                                        placeholder="Digite seu E-mail..." 
+                                        onChange={handleInputChange}
                                     />
-                                </button>
+                                </div>
+                            </div>
+                            <div className="container-input">
+                                <label htmlFor="password">Senha</label>
+                                <div className="input">
+                                    <input 
+                                        type={showPassword ? 'text' : 'password'}
+                                        name="password" 
+                                        id="password" 
+                                        placeholder="Digite sua senha..."
+                                        onChange={handleInputChange}
+                                    />
+                                    <button 
+                                        className="button-show-password"
+                                    >
+                                        <img 
+                                            src={showPassword ? eyeIconOff : eyeIcon} 
+                                            alt="Show Password" 
+                                            className=""
+                                            onClick={togglePasswordVisibility}
+                                        />
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <button type="submit" className="button-login">Entrar</button>
-                </form>
-            </div>
-        </main>
+                        <button type="submit" className="button-login">Entrar</button>
+                    </form>
+                </div>
+            </main>
+            <Footer></Footer>
+        </>
     )
 }
 

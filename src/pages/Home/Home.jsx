@@ -104,7 +104,7 @@ function Home() {
                         <section className="container-featured-categories">
                             <div className="featured-categories-container-title">
                                 <h2>Recomendações de browser games</h2>
-                                <span>Deixe-nos ajudá-lo a encontrar seu próximo jogo favorito. Nossas recomendações personalizadas são baseadas em seus gostos e preferências. Explore, jogue e divirta-se!</span>
+                                <span>Deixe-nos ajudá-lo a encontrar seu próximo jogo favorito. Nossas recomendações personalizadas são baseadas em jogos ainda não avalido. Explore, jogue e divirta-se!</span>
                             </div>
                             <div className="wrapper-cards">
                                 <Recommendation visibleCards={showMoreCardsQuantityRecommendation}></Recommendation>

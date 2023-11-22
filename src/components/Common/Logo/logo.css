@@ -12,7 +12,6 @@
     font-weight: 500;
 }
 
-
 @media (min-width: 0px) and (max-width: 767px) {
     .logo-name {
         display: none;
